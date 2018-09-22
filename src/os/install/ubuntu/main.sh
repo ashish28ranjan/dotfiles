@@ -21,6 +21,5 @@ upgrade
 ./../npm.sh
 ./tmux.sh
 ./../neovim.sh
-./../vim.sh
 
 ./cleanup.sh
