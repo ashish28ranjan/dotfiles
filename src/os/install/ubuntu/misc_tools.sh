@@ -12,6 +12,19 @@ install_package "cURL" "curl"
 install_package "ShellCheck" "shellcheck"
 install_package "xclip" "xclip"
 
+
+if ! package_is_installed "ffmpeg"; then
+
+    add_ppa "jonathonf/ffmpeg-3" \
+        || print_error "ffmpeg (add ppa)"
+
+    update &> /dev/null \
+        || print_error "ffmpeg (resync package index files)"
+
+fi
+install_package "ffmpeg" "ffmpeg libav-tools x264 x265"
+
+
 if [ -d "$HOME/.nvm" ]; then
 
     if ! package_is_installed "yarn"; then
