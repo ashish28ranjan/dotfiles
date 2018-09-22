@@ -20,6 +20,7 @@ upgrade
 ./misc_tools.sh
 ./../npm.sh
 ./tmux.sh
+./../neovim.sh
 ./../vim.sh
 
 ./cleanup.sh
