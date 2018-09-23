@@ -15,11 +15,13 @@ upgrade
 ./browsers.sh
 ./compression_tools.sh
 ./git.sh
+./gpg.sh
 ./image_tools.sh
 ./misc.sh
 ./misc_tools.sh
 ./../npm.sh
 ./tmux.sh
+./ag.sh
 ./../neovim.sh
 
 ./cleanup.sh
