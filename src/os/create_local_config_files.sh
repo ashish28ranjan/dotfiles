@@ -117,7 +117,6 @@ create_gpg_conf_local() {
 # recipients.  In these cases it is better to use the key ID.
 
 #group mynames = paige 0x12345678 joe patti
-
 "\
         >> "$FILE_PATH"
     fi
