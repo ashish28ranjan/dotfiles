@@ -1,4 +1,4 @@
-# [Cătălin](https://github.com/alrra)’s dotfiles
+# [Ashish](https://github.com/ashish28ranjan)’s dotfiles
 
 These are the base dotfiles that I start with when I set up a
 new environment. For more specific local needs I use the `.local`
@@ -14,8 +14,8 @@ understand [what it does](src/os/setup.sh). Seriously, **DON'T**!)
 
 | OS | Snippet |
 |:---|:---|
-| `macOS` | `bash -c "$(curl -LsS https://raw.github.com/alrra/dotfiles/master/src/os/setup.sh)"` |
-| `Ubuntu` | `bash -c "$(wget -qO - https://raw.github.com/alrra/dotfiles/master/src/os/setup.sh)"` |
+| `macOS` | `bash -c "$(curl -LsS https://raw.github.com/ashish28ranjan/dotfiles/master/src/os/setup.sh)"` |
+| `Ubuntu` | `bash -c "$(wget -qO - https://raw.github.com/ashish28ranjan/dotfiles/master/src/os/setup.sh)"` |
 
 That's it! :sparkles:
 
@@ -171,8 +171,8 @@ such as the `git` user credentials, e.g.:
 
 [user]
 
-    name = Cătălin Mariș
-    email = alrra@example.com
+    name = Ashish Ranjan
+    email = ashish@example.com
     signingkey = XXXXXXXX
 ```
 
@@ -186,7 +186,7 @@ settings from `~/.vimrc`.
 
 If you decide to fork this project, don't forget to substitute my
 username with your own in the [`setup` snippets](#setup) and [in the
-`setup` script](https://github.com/alrra/dotfiles/blob/1503cf23ef23f6e31342b140bcd246625160b94f/src/os/setup.sh#L3).
+`setup` script](https://github.com/ashish28ranjan/dotfiles/blob/master/src/os/setup.sh#L3).
 
 ## Update
 
@@ -198,8 +198,8 @@ part, run the appropriate [`os` script](src/os).
 
 Inspiration and code was taken from many sources, including:
 
-* [Mathias Bynens'](https://github.com/mathiasbynens)
-  [dotfiles](https://github.com/mathiasbynens/dotfiles)
+* [Cătălin's dotfiles](https://github.com/alrra/dotfiles)
+* [Mathias Bynens' dotfiles](https://github.com/mathiasbynens/dotfiles)
 
 ## License
 
