@@ -27,17 +27,17 @@ create_gitconfig_local() {
 
     if [ ! -e "$FILE_PATH" ] || [ -z "$FILE_PATH" ]; then
 
-        print_in_cyan "   Setting up Git local config...\n\n"
+        print_in_cyan "\n     Setting up Git local config...\n\n"
 
         defaultName=$( git config --global user.name )
         defaultEmail=$( git config --global user.email )
 
-        print_in_yellow "   (Press ENTER to continue with default, or type new value and then press ENTER)\n"
+        print_in_yellow "     (Press ENTER to continue with [default], or type a new value and then press ENTER)\n"
 
-        ask "Name:  [$defaultName] "
+        ask "  Name:  [$defaultName] "
         tmpName="$(get_answer)"
 
-        ask "Email: [$defaultEmail] "
+        ask "  Email: [$defaultEmail] "
         tmpEmail="$(get_answer)"
 
 
@@ -59,6 +59,7 @@ create_gitconfig_local() {
         >> "$FILE_PATH"
     fi
 
+    printf "\n"
     print_result $? "$FILE_PATH"
 
 }
