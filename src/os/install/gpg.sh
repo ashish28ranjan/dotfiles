@@ -26,7 +26,6 @@ main() {
     # Make .gnupg rwx------
     chmod 700 "$HOME/.gnupg"
 
-    printf "\n"
 }
 
 main
