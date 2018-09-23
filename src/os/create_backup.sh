@@ -18,7 +18,7 @@ create_backup() {
 
     CURRENT_VERSION=$[$LAST_VERSION + 1]
 
-    BACKUP_DIR="~/dotfiles-backup/v$CURRENT_VERSION"
+    BACKUP_DIR="$HOME/dotfiles-backup/v$CURRENT_VERSION"
 
     mkd "$BACKUP_DIR" \
         || ( print_error "Failed to create backup directory" && return 0 )
@@ -59,6 +59,7 @@ create_backup() {
             # If the target file is not a symlink, take a backup
             execute \
                 "cp -a $targetFile $BACKUP_DIR" \
+                "$targetFile" \
                 || print_error "Failed to backup $targetFile"
 
         fi
