@@ -15,7 +15,7 @@ upgrade
 ./browsers.sh
 ./compression_tools.sh
 ./git.sh
-./gpg.sh
+./../gpg.sh
 ./image_tools.sh
 ./misc.sh
 ./misc_tools.sh

@@ -6,7 +6,5 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-print_in_purple "\n   GPG\n\n"
-
 install_package "GPG" "gnupg"
 install_package "GPG 2" "gnupg2"
