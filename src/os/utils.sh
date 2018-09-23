@@ -218,6 +218,10 @@ print_in_color() {
         "$(tput sgr0 2> /dev/null)"
 }
 
+print_in_cyan() {
+    print_in_color "$1" 6
+}
+
 print_in_green() {
     print_in_color "$1" 2
 }
