@@ -6,13 +6,9 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-print_in_purple "\n   Neovim\n\n"
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 if ! package_is_installed "neovim"; then
 
-    add_ppa "neovim-ppa" \
+    add_ppa "neovim-ppa/stable" \
         || print_error "Neovim (add ppa)"
 
     update &> /dev/null \
