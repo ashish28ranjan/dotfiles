@@ -125,6 +125,59 @@ create_gpg_conf_local() {
 
 }
 
+create_ssh_config_local() {
+
+    declare -r FILE_PATH="$HOME/.ssh/config"
+    declare -r FILE_PATH_EXAMPLE="$HOME/.ssh/config.example"
+
+    # Create the full folder structure
+    mkdir -p "$(dirname $FILE_PATH)"
+    printf "\n"
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    configData="Host *
+  Port 22
+  CheckHostIP yes
+  HashKnownHosts yes
+  StrictHostKeyChecking ask
+  Ciphers chacha20-poly1305@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr,3des-cbc,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-cbc,aes192-cbc,aes128-cbc
+  Compression yes
+  ConnectionAttempts 1
+  PubkeyAuthentication yes
+  RekeyLimit 100M 3600
+  TCPKeepAlive yes
+
+
+# Host example
+#   User dev
+#   HostName dev.example.com
+#   IdentityAgent SSH_AUTH_SOCK
+#   IdentityFile ~/.ssh/id_dsa
+#   IdentityFile ~/.ssh/id_rsa
+#   PasswordAuthentication no
+#   UserKnownHostsFile ~/.ssh/known_hosts2
+#   PermitLocalCommand yes
+#   LocalCommand \"uname -a\"
+#   RemoteCommand \"uname -a\"
+"
+
+    if [ ! -e "$FILE_PATH" ] || [ -z "$FILE_PATH" ]; then
+
+        printf "%s\n" "$configData"\
+            >> "$FILE_PATH" \
+            && print_result $? "$FILE_PATH"
+
+    elif [ ! -e "$FILE_PATH_EXAMPLE" ] || [ -z "$FILE_PATH_EXAMPLE" ]; then
+
+        printf "%s\n" "$configData"\
+            >> "$FILE_PATH_EXAMPLE" \
+            && print_result $? "$FILE_PATH_EXAMPLE"
+
+    fi
+
+}
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 main() {
@@ -135,6 +188,7 @@ main() {
     create_gitconfig_local
     create_vimrc_local
     create_gpg_conf_local
+    create_ssh_config_local
 
 }
 
