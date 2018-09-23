@@ -8,7 +8,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 create_directories() {
 
     declare -a DIRECTORIES=(
-        "$HOME/programs"
+        "$HOME/projects"
     )
 
     for i in "${DIRECTORIES[@]}"; do
