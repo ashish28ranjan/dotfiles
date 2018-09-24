@@ -13,7 +13,7 @@ export EDITOR="vim"
 
 # Ignore commands that start with spaces and duplicates.
 
-export HISTCONTROL=ignoreboth
+# export HISTCONTROL=ignoreboth
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -26,7 +26,7 @@ export HISTFILESIZE=10000
 
 # Don't add certain commands to the history file.
 
-export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:* --help"
+export HISTIGNORE="l[sl]:[bf]g:c:clear:history:exit:q:pwd:* --help"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -46,14 +46,18 @@ export LC_ALL="en_US.UTF-8"
 
 # Use custom `less` colors for `man` pages.
 
-export LESS_TERMCAP_md="$(tput bold 2> /dev/null; tput setaf 2 2> /dev/null)"
-export LESS_TERMCAP_me="$(tput sgr0 2> /dev/null)"
+export LESS_TERMCAP_md=$(printf "\e[1;31m")
+export LESS_TERMCAP_me=$(printf "\e[0m")
+export LESS_TERMCAP_se=$(printf "\e[0m")
+export LESS_TERMCAP_so=$(printf "\e[1;40;92m")
+export LESS_TERMCAP_ue=$(printf "\e[0m")
+export LESS_TERMCAP_us=$(printf "\e[1;32m")
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Don't clear the screen after quitting a `man` page.
 
-export MANPAGER="less -X"
+# export MANPAGER="less -X"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
