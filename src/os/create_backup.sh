@@ -44,6 +44,21 @@ finish_backup() {
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+copy_file() {
+
+    if [[ -e "$1" && ! -L "$1" ]]; then
+
+        # If the source file is not a symlink, take a backup
+        execute \
+            "cp -a $1 $2" \
+            "$1 → $2" \
+            || print_error "Failed to backup $1"
+    fi
+
+}
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 create_backup() {
 
     declare -a FILES_TO_BACKUP=(
@@ -78,15 +93,7 @@ create_backup() {
         sourceFile="$HOME/.$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
         targetFile="$BACKUP_DIR/.$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
 
-        if [[ -e "$sourceFile" && ! -L "$sourceFile" ]]; then
-
-            # If the target file is not a symlink, take a backup
-            execute \
-                "cp -a $sourceFile $targetFile" \
-                "$sourceFile → $targetFile" \
-                || print_error "Failed to backup $sourceFile"
-
-        fi
+        copy_file "$sourceFile" "$targetFile"
 
     done
 
@@ -110,16 +117,9 @@ create_full_path_backup() {
         sourceFile="$HOME/.$i"
         targetFile="$BACKUP_DIR/.$i"
 
-        if [[ -e "$sourceFile" && ! -L "$sourceFile" ]]; then
+        mkdir -p "$(dirname $targetFile)"
 
-            # If the source file is not a symlink, take a backup
-            mkdir -p "$(dirname $targetFile)"
-            execute \
-                "cp -a $sourceFile $targetFile" \
-                "$sourceFile → $targetFile" \
-                || print_error "Failed to backup $sourceFile"
-
-        fi
+        copy_file "$sourceFile" "$targetFile"
 
     done
 
