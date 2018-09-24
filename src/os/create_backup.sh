@@ -5,13 +5,16 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-create_backup() {
+initialize_backup_dir() {
+
+    mkdir -p "$HOME/dotfiles-backup"
 
     # get the version
     LAST_VERSION=$(
-        find -iname 'v[[:alnum:]]*' \
+        find "$HOME/dotfiles-backup" -iname 'v[[:alnum:]]*' \
         -type d | \
-        cut -c 4- | \
+        sed "s/.*\///" | \
+        cut -c 2- | \
         sort -n | \
         tail -1
     )
@@ -21,7 +24,42 @@ create_backup() {
     BACKUP_DIR="$HOME/dotfiles-backup/v$CURRENT_VERSION"
 
     mkd "$BACKUP_DIR" \
-        || ( print_error "Failed to create backup directory" && return 0 )
+        || ( print_error "Failed to create backup directory" && exit 1 )
+
+}
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+finish_backup() {
+
+    find "$BACKUP_DIR" -type d -exec rmdir {} \; 2>/dev/null
+
+    if [ -d "$BACKUP_DIR" ]; then
+        print_success "Backup created successfully"
+    else
+        print_success "Backup is not needed, hence v$CURRENT_VERSION has been deleted"
+    fi
+
+}
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+copy_file() {
+
+    if [[ -e "$1" && ! -L "$1" ]]; then
+
+        # If the source file is not a symlink, take a backup
+        execute \
+            "cp -a $1 $2" \
+            "$1 → $2" \
+            || print_error "Failed to backup $1"
+    fi
+
+}
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+create_backup() {
 
     declare -a FILES_TO_BACKUP=(
 
@@ -52,40 +90,54 @@ create_backup() {
 
     for i in "${FILES_TO_BACKUP[@]}"; do
 
-        targetFile="$HOME/.$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
+        sourceFile="$HOME/.$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
+        targetFile="$BACKUP_DIR/.$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
 
-        if [ ! -L "$targetFile" ]; then
-
-            # If the target file is not a symlink, take a backup
-            execute \
-                "cp -a $targetFile $BACKUP_DIR" \
-                "$targetFile" \
-                || print_error "Failed to backup $targetFile"
-
-        fi
+        copy_file "$sourceFile" "$targetFile"
 
     done
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    if [ "ls -A $BACKUP_DIR | wc -m" == "0" ]; then
-
-        # If the backup directory is empty then delete it
-        execute "rmdir $BACKUP_DIR >> /dev/null 2>&1" \
-            && print_success "Backup is not needed"
-
-    else
-        print_success "Backup created successfully"
-
-    fi
 
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+create_full_path_backup() {
+
+    declare -a FILES_TO_BACKUP=(
+
+        "gnupg/gpg.conf"
+        "gnupg/gpg-agent.conf"
+
+    )
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    for i in "${FILES_TO_BACKUP[@]}"; do
+
+        sourceFile="$HOME/.$i"
+        targetFile="$BACKUP_DIR/.$i"
+
+        mkdir -p "$(dirname $targetFile)"
+
+        copy_file "$sourceFile" "$targetFile"
+
+    done
+
+}
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 main() {
     print_in_purple "\n • Create backup\n\n"
+
+    initialize_backup_dir
+
     create_backup
+
+    create_full_path_backup
+
+    finish_backup
 }
 
 main
