@@ -99,11 +99,9 @@ get_git_repository_details() {
 
 set_prompts() {
 
-    local bold=$(tput bold 2> /dev/null)
-    local reset=$(tput sgr0 2> /dev/null)
-
     local cyan=""
     local green=""
+    local grey=""
     local orange=""
     local white=""
     local yellow=""
@@ -117,7 +115,8 @@ set_prompts() {
 
         cyan=$(tput setaf 37)
         green=$(tput setaf 64)
-        orange=$(tput setaf 166)
+        grey=$(tput setaf 247)
+        orange=$(tput setaf 130)
         white=$(tput setaf 15)
         yellow=$(tput setaf 136)
 
@@ -135,15 +134,16 @@ set_prompts() {
     PS1="\[\033]0;\W\007\]" # Terminal title (set to the
                             # current working directory)
 
-    PS1+="$reset$bold"
+    PS1+="\[$(tput bold)\]" # Set everything to bold from here
     PS1+="$orange\u"        # Username
-    PS1+="$white@"
-    PS1+="$yellow\h"        # Host
-    PS1+="$white: "
-    PS1+="$green\w"         # Working directory
-    PS1+="\$(get_git_repository_details \"$white on $cyan\")"
+    PS1+="$grey@"
+    PS1+="$green\h"        # Host
+    PS1+="$grey: "
+    PS1+="$yellow\w"         # Working directory
+    PS1+="\$(get_git_repository_details \"$white ⚡ $cyan\")"
     PS1+="\n"
-    PS1+="\[$reset\]\[$white\]$ \[$reset\]"
+    PS1+="\[$(tput sgr0)\]" # Reset everthing from here
+    PS1+="$ "
 
     export PS1
 
@@ -151,7 +151,7 @@ set_prompts() {
     # | PS2 - Continuation interactive prompt                          |
     # ------------------------------------------------------------------
 
-    PS2="⚡ "
+    PS2="> "
 
     export PS2
 
