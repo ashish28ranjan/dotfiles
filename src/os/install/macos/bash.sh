@@ -82,6 +82,8 @@ main() {
 
     print_in_purple "\n   Bash\n\n"
 
+    [[ ":$PATH:" != *":$HOME/bin:"* ]] && PATH="$HOME/bin:${PATH}"
+
     brew_install "Bash" "bash" \
         && change_default_bash
 
