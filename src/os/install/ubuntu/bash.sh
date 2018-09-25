@@ -12,6 +12,8 @@ main() {
 
     [[ ":$PATH:" != *":$HOME/bin:"* ]] && PATH="$HOME/bin:${PATH}"
 
+    print_success "$HOME/bin prepended to PATH"
+
 }
 
 main
