@@ -20,8 +20,10 @@ datauri() {
                     "$mimeType" \
                     "$(openssl base64 -in "$1" | tr -d "\n")"
     else
-        printf "%s is not a file.\n" "$1"
+        printf "%s is not a file" "$1"
     fi
+
+    printf "\n"
 
 }
 
@@ -157,12 +159,11 @@ ppi() {
 # Search history.
 
 qh() {
-    #           ┌─ enable colors for pipe
-    #           │  ("--color=auto" enables colors only if
-    #           │  the output is in the terminal)
-    grep --color=always "$*" "$HISTFILE" |       less -RX
-    # display ANSI color escape sequences in raw form ─┘│
-    #       don't clear the screen after quitting less ─┘
+    #       ┌─ enable colors for pipe
+    #       │  ("--color" enables colors only if
+    #       │  the output is in the terminal)
+    ag -i --color "$*" "$HISTFILE"
+    #   └─ ignore case
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -170,7 +171,7 @@ qh() {
 # Search for text within the current directory.
 
 qt() {
-    grep -ir --color=always "$*" --exclude-dir=".git" --exclude-dir="node_modules" . | less -RX
-    #     │└─ search all files under each directory, recursively
-    #     └─ ignore case
+    ag -ir --color --ignore-dir ".git" --ignore-dir "node_modules" "$*" .
+    #   │└─ search all files under each directory, recursively
+    #   └─ ignore case
 }
