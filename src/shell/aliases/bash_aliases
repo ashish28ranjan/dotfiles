@@ -21,12 +21,23 @@ alias map="xargs -n1"
 alias n="npm"
 alias path='printf "%b\n" "${PATH//:/\\n}"'
 alias rm="rm -rf --"
-alias t="tmux"
 alias y="yarn"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# GPG
+
 alias gpg="gpg2 --options $HOME/.gnupg/gpg.conf --options $HOME/.gnupg/gpg.conf.local"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# tmux
+
+alias t="tmux"
+alias ta="tmux attach"
+alias tat="tmux attach -t"
+alias tl="tmux ls"
+alias tn="tmux new-session -s"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
