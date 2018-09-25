@@ -1,28 +1,47 @@
-[credential]
-
-    # Store credentials in cache for 600s
-
-    helper = cache --timeout=600
-
 [alias]
 
-    a   = commit --amend
-    br  = branch
-    c   = commit
-    ca  = !git add -A && git commit             # Commit all changes.
-    co  = checkout
-    cp  = cherry-pick
-    d   = diff
-    dc  = diff --cached
-    f   = fetch
-    g   = log --graph --pretty=custom           # Show custom graph.
-    git = !exec git                             # Allow `$ git git git...`
-    l   = log --pretty=custom                   # Show custom log.
-    lc  = shortlog --email --numbered --summary # List contributors.
-    p   = push
-    r   = rebase
-    s   = status
-    w   = instaweb --httpd=webrick              # Start web-based visualizer.
+    # List all aliases
+    la   = ! git config --get-regexp alias | cut -c 7- | sed -E 's/ /\t/' | sort -k 1
+
+    # Basic
+    a    = add
+    b    = branch
+    c    = commit
+    co   = checkout
+    cp   = cherry-pick
+    d    = diff
+    dc   = diff --cached
+    f    = fetch
+    git  = !exec git                        # Allow `$ git git git...`
+    s    = status
+    r    = remote
+
+    # Kaleidoscope commands
+    dkal = difftool -y -t Kaleidoscope
+    mkal = mergetool -y -t Kaleidoscope
+
+    # Log
+    g    = log --graph --pretty=custom      # Show custom graph.
+    l    = log --pretty=custom              # Show custom log.
+    lc   = shortlog --email --numbered --summary    # List contributors.
+
+    # Pull & Push
+    pl   = pull
+    plum = pull upstream master
+    pom  = push origin master
+    pu   = push
+
+    # Rebase
+    rb   = rebase
+    rbc  = rebase --continue
+
+    # Submodule
+    si   = submodule init
+    su   = submodule update
+    ssu  = ! git submodule sync && git submodule update
+
+    # Web
+    web  = instaweb --httpd=webrick         # Start web-based visualizer.
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -31,6 +50,24 @@
     cc = "!f() { \
         git log --pretty=custom --decorate --date=short -S\"$1\"; \
     }; f"
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    # Order files by number of commits, ascending
+    # Written by Corey Haines, scriptified by Gary Bernhardt
+    # Show churn for a time range:
+    #   $ git churn --since='1 month ago'
+
+    churn = "!f() { \
+        git log --all -M -C --name-only --format='format:' \"$@\" \
+            | sort \
+            | grep -v '^$' \
+            | uniq -c \
+            | sort \
+            | awk 'BEGIN {print \"count\tfile\"} {print $1 \"\t\" $2}' \
+            | sort -gr \
+            | head -n 20; \
+        }; f"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -57,25 +94,6 @@
     lrb = "!f() { \
         remote="${1:-origin}"; \
         git ls-remote --heads "$remote"; \
-    }; f"
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Merge GitHub pull request on top of the current branch or,
-    # if a branch name is specified, on top of the specified branch.
-
-    mpr = "!f() { \
-        declare currentBranch=\"$(git symbolic-ref --short HEAD)\"; \
-        declare branch=\"${2:-$currentBranch}\"; \
-        if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
-            git fetch origin refs/pull/$1/head:pr/$1 && \
-            git checkout -B $branch && \
-            git rebase $branch pr/$1 && \
-            git checkout -B $branch && \
-            git merge pr/$1 && \
-            git branch -D pr/$1 && \
-            git commit --amend -m \"$(git log -1 --pretty=%B)\n\nClose #$1\"; \
-        fi \
     }; f"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -111,18 +129,18 @@
 
     current = green bold
     local = green
-    remote = yellow
+    remote = red
 
 [color "diff"]
 
-    frag = magenta
-    meta = yellow
+    frag = magenta bold
+    meta = yellow bold
 
-    new = green
-    old = red
+    new = green bold
+    old = red bold
 
-    newMoved = cyan
-    oldMoved = blue
+    newMoved = cyan bold
+    oldMoved = blue bold
 
 [color "status"]
 
@@ -137,6 +155,13 @@
     autocrlf = input
     editor = nvim
     excludesfile = ~/.gitignore
+    pager = less -FRSX -x2
+
+[credential]
+
+    # Store credentials in cache for 600s
+
+    helper = cache --timeout=600
 
 [diff]
 
@@ -152,6 +177,39 @@
     # Use `hexdump` to diff binary files.
 
     textconv = hexdump -v -C
+
+[difftool]
+
+    prompt = false
+    tool = vimdiff
+
+[difftool "Kaleidoscope"]
+
+    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+
+[grep]
+
+    extendRegexp = true
+    lineNumber = true
+
+[merge]
+
+    conflictstyle = diff3
+
+[mergetool]
+
+    prompt = false
+    tool = vimdiff
+
+[mergetool "Kaleidoscope"]
+
+    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+    trustexitcode = true
+
+[pager]
+
+    diff = "diff-so-fancy | less --tabs=4 -FRX"
+    show = "diff-so-fancy | less --tabs=4 -FRX"
 
 [pretty]
 
@@ -169,6 +227,11 @@
     # annotated tags when pushing branches out.
 
     followTags = true
+
+[rebase]
+
+    instructionFormat = "[%an - %ar] %s"
+    autoStash = true
 
 [user]
 
