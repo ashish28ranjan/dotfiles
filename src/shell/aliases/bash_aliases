@@ -4,7 +4,6 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias cd..="cd .."
-alias rmf="rm -rf"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -19,7 +18,7 @@ alias m="man"
 alias map="xargs -n1"
 alias n="npm"
 alias path='printf "%b\n" "${PATH//:/\\n}"'
-alias rm="rm -rf --"
+alias rmf="rm -rf"
 alias y="yarn"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
