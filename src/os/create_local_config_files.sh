@@ -59,7 +59,6 @@ create_gitconfig_local() {
         >> "$FILE_PATH"
     fi
 
-    printf "\n"
     print_result $? "$FILE_PATH"
 
 }
@@ -84,7 +83,6 @@ create_gpg_conf_local() {
 
     # Create the full folder structure
     mkdir -p "$(dirname $FILE_PATH)"
-    printf "\n"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -132,7 +130,6 @@ create_ssh_config_local() {
 
     # Create the full folder structure
     mkdir -p "$(dirname $FILE_PATH)"
-    printf "\n"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
