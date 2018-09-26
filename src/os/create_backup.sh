@@ -52,7 +52,7 @@ copy_file() {
         execute \
             "cp -a $1 $2" \
             "$1 → $2" \
-            || print_error "Failed to backup $1"
+            || print_error "$1 → $2"
     fi
 
 }
