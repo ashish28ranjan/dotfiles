@@ -40,6 +40,42 @@ cmd_exists() {
     command -v "$1" &> /dev/null
 }
 
+create_symbolick_link() {
+
+    local -r sourceFile="$1"
+    local -r targetFile="$2"
+
+    if [ ! -e "$targetFile" ] || $skipQuestions; then
+
+        execute \
+            "ln -fs $sourceFile $targetFile" \
+            "$targetFile → $sourceFile"
+
+    elif [ "$(readlink "$targetFile")" == "$sourceFile" ]; then
+        print_success "$targetFile → $sourceFile"
+    else
+
+        if ! $skipQuestions; then
+
+            ask_for_confirmation "'$targetFile' already exists, do you want to overwrite it?"
+            if answer_is_yes; then
+
+                rm -rf "$targetFile"
+
+                execute \
+                    "ln -fs $sourceFile $targetFile" \
+                    "$targetFile → $sourceFile"
+
+            else
+                print_error "$targetFile → $sourceFile"
+            fi
+
+        fi
+
+    fi
+
+}
+
 kill_all_subprocesses() {
 
     local i=""
