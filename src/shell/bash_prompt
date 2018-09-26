@@ -113,7 +113,7 @@ set_prompts() {
         # Solarized colors.
         # https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized#the-values
 
-        cyan=$(tput setaf 37)
+        cyan=$(tput setaf 74)
         green=$(tput setaf 64)
         grey=$(tput setaf 247)
         orange=$(tput setaf 130)
@@ -140,8 +140,8 @@ set_prompts() {
     PS1+="$green\h"        # Host
     PS1+="$grey: "
     PS1+="$yellow\w"         # Working directory
-    PS1+="\$(get_git_repository_details \"$white ⚡ $cyan\")"
-    PS1+="\n"
+    PS1+="\$(get_git_repository_details \"$grey ⚡ $cyan\")"
+    PS1+=" "
     PS1+="\[$(tput sgr0)\]" # Reset everthing from here
     PS1+="$ "
 
