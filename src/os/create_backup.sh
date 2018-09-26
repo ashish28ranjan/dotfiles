@@ -5,7 +5,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-initialize_backup_dir() {
+init_backup() {
 
     mkdir -p "$HOME/dotfiles-backup"
 
@@ -131,7 +131,7 @@ create_full_path_backup() {
 main() {
     print_in_purple "\n • Create backup\n\n"
 
-    initialize_backup_dir
+    init_backup
 
     create_backup
 
