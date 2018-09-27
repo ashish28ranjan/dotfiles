@@ -43,3 +43,23 @@ set menu-complete-display-prefix on
 # Display a list of the matching files
 
 set show-all-if-ambiguous on
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
+# https://github.com/alrra/dotfiles/issues/38#issuecomment-277527017
+
+# Ctrl →
+"\e[1;5C":forward-word
+# Ctrl ←
+"\e[1;5D":backward-word
+
+# shift →
+"\e[1;2C":shell-forward-word
+# shift ←
+"\e[1;2D":shell-backward-word
+
+# fn →
+"\e[F":end-of-line
+# fn ←
+"\e[H":beginning-of-line
