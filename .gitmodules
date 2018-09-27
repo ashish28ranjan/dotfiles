@@ -1,0 +1,4 @@
+[submodule "src/tmuxifier"]
+	path = src/tmuxifier
+	url = https://github.com/jimeh/tmuxifier.git
+	branch = master
