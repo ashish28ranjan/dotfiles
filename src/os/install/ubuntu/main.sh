@@ -24,5 +24,6 @@ upgrade
 ./tmux.sh
 ./ag.sh
 ./../neovim.sh
+./../tmuxifier.sh
 
 ./cleanup.sh

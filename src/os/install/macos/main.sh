@@ -23,6 +23,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 ./ag.sh
 ./video_tools.sh
 ./../neovim.sh
+./../tmuxifier.sh
 ./web_font_tools.sh
 
 ./cleanup.sh
