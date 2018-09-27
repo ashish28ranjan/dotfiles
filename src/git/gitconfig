@@ -21,8 +21,7 @@
     mkal = mergetool -y -t Kaleidoscope
 
     # Log
-    g    = log --graph --pretty=custom      # Show custom graph.
-    l    = log --pretty=custom              # Show custom log.
+    l    = log --graph --pretty=custom      # Show custom graph.
     lc   = shortlog --email --numbered --summary    # List contributors.
 
     # Pull & Push
@@ -213,10 +212,10 @@
 
 [pretty]
 
-    custom = "%C(magenta)%h%C(red)%d %C(yellow)%ar %C(green)%s %C(yellow)(%an)"
-    #                     │        │            │            │             └─ author name
-    #                     │        │            │            └─ message
-    #                     │        │            └─ date (relative)
+    custom = "%C(magenta)%h%C(red)%d %C(green)%ar %C(yellow)%s %C(cyan)(%an)"
+    #                     │        │           │             │           └─ author name
+    #                     │        │           │             └─ message
+    #                     │        │           └─ date (relative)
     #                     │        └─ decorations (branch, heads or tags)
     #                     └─ hash (abbreviated)
 
