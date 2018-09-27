@@ -113,6 +113,9 @@ set_prompts() {
         # Solarized colors.
         # https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized#the-values
 
+        # Escape color literals to avoid commandline overwriting itself
+        # https://stackoverflow.com/questions/2024884/commandline-overwrites-itself-when-the-commands-get-too-long#answer-9486356
+
         cyan="\[$(tput setaf 74)\]"
         green="\[$(tput setaf 64)\]"
         grey="\[$(tput setaf 247)\]"
