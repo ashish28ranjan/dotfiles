@@ -149,7 +149,7 @@
 
 [core]
 
-    abbrev = 12
+    abbrev = 7
     attributesfile = ~/.gitattributes
     autocrlf = input
     editor = nvim
