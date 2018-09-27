@@ -21,9 +21,9 @@ TAB: menu-complete
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# Disable beeping and window flashing.
+# Disable beeping; Allow window flashing.
 
-set bell-style none
+set bell-style visible
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
