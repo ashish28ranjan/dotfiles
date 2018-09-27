@@ -22,7 +22,6 @@ upgrade
 ./misc_tools.sh
 ./../npm.sh
 ./tmux.sh
-./ag.sh
 ./../neovim.sh
 ./../tmuxifier.sh
 
