@@ -12,7 +12,7 @@ main() {
     local -r sourceFile="$(cd ../.. && pwd)/tmuxifier/bin/tmuxifier"
     local -r targetFile="$HOME/bin/tmuxifier"
 
-    create_symbolick_link "$sourceFile" "$targetFile"
+    create_symlink "$sourceFile" "$targetFile"
 
     printf "\n"
 }

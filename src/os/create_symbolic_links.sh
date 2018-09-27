@@ -49,7 +49,7 @@ create_symlinks() {
         sourceFile="$(cd .. && pwd)/$i"
         targetFile="$HOME/.$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
 
-        create_symbolick_link "$sourceFile" "$targetFile"
+        create_symlink "$sourceFile" "$targetFile"
 
     done
 
@@ -89,7 +89,7 @@ create_full_path_symlinks() {
         # Create the full folder structure
         mkdir -p "$(dirname $targetFile)"
 
-        create_symbolick_link "$sourceFile" "$targetFile"
+        create_symlink "$sourceFile" "$targetFile"
 
     done
 

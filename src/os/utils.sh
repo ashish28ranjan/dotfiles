@@ -40,7 +40,7 @@ cmd_exists() {
     command -v "$1" &> /dev/null
 }
 
-create_symbolick_link() {
+create_symlink() {
 
     local -r sourceFile="$1"
     local -r targetFile="$2"
