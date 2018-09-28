@@ -15,3 +15,10 @@ brew_install "htop" "htop"
 if [ -d "$HOME/.nvm" ]; then
     brew_install "Yarn" "yarn" "" "" "--without-node"
 fi
+
+
+if [ ! -f "$HOME/bin/diff-so-fancy" ]; then
+    wget -qO "$HOME/bin/diff-so-fancy" "https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy" &> /dev/null
+fi
+execute "chmod +x '$HOME/bin/diff-so-fancy'" \
+        "diff-so-fancy"

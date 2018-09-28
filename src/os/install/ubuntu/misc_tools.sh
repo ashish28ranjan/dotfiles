@@ -45,5 +45,9 @@ if [ -d "$HOME/.nvm" ]; then
     install_package "Yarn" "yarn" "--no-install-recommends"
 fi
 
-wget -qO "$HOME/bin/diff-so-fancy" "https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy" &> /dev/null
-chmod +x "$HOME/bin/diff-so-fancy"
+
+if [ ! -f "$HOME/bin/diff-so-fancy" ]; then
+    wget -qO "$HOME/bin/diff-so-fancy" "https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy" &> /dev/null
+fi
+execute "chmod +x '$HOME/bin/diff-so-fancy'" \
+        "diff-so-fancy"
