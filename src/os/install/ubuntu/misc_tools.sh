@@ -51,3 +51,15 @@ if [ ! -f "$HOME/bin/diff-so-fancy" ]; then
 fi
 execute "chmod +x '$HOME/bin/diff-so-fancy'" \
         "diff-so-fancy"
+
+
+if ! package_is_installed "redshift"; then
+
+    add_ppa "dobey/redshift-daily" \
+        || print_error "Redshift (add ppa)"
+
+    update &> /dev/null \
+        || print_error "Redshift (resync package index files)"
+
+fi
+install_package "Redshift" "redshift redshift-gtk"
