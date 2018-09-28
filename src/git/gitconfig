@@ -132,14 +132,21 @@
 
 [color "diff"]
 
-    frag = magenta bold
     meta = yellow bold
+    frag = magenta bold
 
     new = green bold
     old = red bold
 
     newMoved = cyan bold
     oldMoved = blue bold
+
+[color "diff-highlight"]
+
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
 
 [color "status"]
 
@@ -154,7 +161,7 @@
     autocrlf = input
     editor = nvim
     excludesfile = ~/.gitignore
-    pager = less -FRSX -x2
+    pager = less -FRX --tabs=4
 
 [credential]
 
@@ -176,6 +183,10 @@
     # Use `hexdump` to diff binary files.
 
     textconv = hexdump -v -C
+
+[diff-so-fancy]
+
+    markEmptyLines = true
 
 [difftool]
 
@@ -207,8 +218,8 @@
 
 [pager]
 
-    diff = "diff-so-fancy | less --tabs=4 -FRX"
-    show = "diff-so-fancy | less --tabs=4 -FRX"
+    diff = "diff-so-fancy | less -FRX --tabs=4"
+    show = "diff-so-fancy | less -FRX --tabs=4"
 
 [pretty]
 
