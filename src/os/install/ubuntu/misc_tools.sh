@@ -12,6 +12,7 @@ install_package "cURL" "curl"
 install_package "ShellCheck" "shellcheck"
 install_package "xclip" "xclip"
 install_package "The Silver Searcher (ag)" "silversearcher-ag"
+install_package "htop" "htop"
 
 
 if ! package_is_installed "ffmpeg"; then
