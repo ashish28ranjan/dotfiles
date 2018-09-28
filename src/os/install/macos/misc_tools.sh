@@ -22,3 +22,6 @@ if [ ! -f "$HOME/bin/diff-so-fancy" ]; then
 fi
 execute "chmod +x '$HOME/bin/diff-so-fancy'" \
         "diff-so-fancy"
+
+
+brew_install "iTerm2" "iterm2" "caskroom/cask" "cask"
