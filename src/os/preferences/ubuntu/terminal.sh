@@ -11,7 +11,25 @@ create_custom_profile() {
 
     local PROFILE_NAME="dotfiles"
 
-    print_in_yellow "   (Press ENTER to continue with [default], or type a new value and then press ENTER)\n"
+    local regex="/\[:[a-z0-9-]+\]/||/visible-name='$PROFILE_NAME'/"
+    #            └─ extract only the UUIDs and the required visible-name line
+
+    local UUID=($(dconf dump /org/gnome/terminal/legacy/profiles:/ |\
+                    awk $regex |\
+                    tac |\
+                #   └─ revert the list
+                    sed -n '/visible/ {n;p}' |\
+                #   └─ Output the line next to visible-name=
+                    cut -c 3-38))
+                #   └─ Cut out the UUID
+
+    ask_for_confirmation "'$PROFILE_NAME' profile already exists, would you iike lo skip this part?"
+
+    if answer_is_yes; then
+        return 1
+    fi
+
+    print_in_yellow "\n   (Press ENTER to continue with [default], or type a new value and then press ENTER)\n"
 
     ask "New profile name: [$PROFILE_NAME] "
 
