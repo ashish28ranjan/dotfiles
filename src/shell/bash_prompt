@@ -100,9 +100,12 @@ get_git_repository_details() {
 set_prompts() {
 
     local cyan=""
+    local emerald=""
     local green=""
     local grey=""
     local orange=""
+    local purple=""
+    local red=""
     local white=""
     local yellow=""
 
@@ -117,11 +120,15 @@ set_prompts() {
         # https://stackoverflow.com/questions/2024884/commandline-overwrites-itself-when-the-commands-get-too-long#answer-9486356
 
         cyan="\[$(tput setaf 74)\]"
+        emerald="\[$(tput setaf 70)\]"
         green="\[$(tput setaf 64)\]"
         grey="\[$(tput setaf 247)\]"
         orange="\[$(tput setaf 130)\]"
+        purple="\[$(tput setaf 99)\]"
+        red="\[$(tput setaf 203)\]"
         white="\[$(tput setaf 15)\]"
         yellow="\[$(tput setaf 136)\]"
+
 
     fi
 
@@ -137,16 +144,36 @@ set_prompts() {
     PS1="\[\033]0;\W\007\]" # Terminal title (set to the
                             # current working directory)
 
-    PS1+="\[$(tput bold)\]" # Set everything to bold from here
-    PS1+="$orange\u"        # Username
-    PS1+="$grey@"
-    PS1+="$green\h"        # Host
-    PS1+="$grey: "
-    PS1+="$yellow\w"         # Working directory
-    PS1+="\$(get_git_repository_details \"$grey ⚡ $cyan\")"
-    PS1+=" "
-    PS1+="\[$(tput sgr0)\]" # Reset everthing from here
-    PS1+="$ "
+    if [ $(id -u) -eq 0 ]; then
+
+        # For root users
+
+        PS1+="\[$(tput bold)\]" # Set everything to bold from here
+        PS1+="$red\u"           # Username
+        PS1+="$grey@"
+        PS1+="$red\h"           # Host
+        PS1+="$grey:"
+        PS1+="$emerald\w"       # Working directory
+        PS1+="$red# "           # Prompt
+        PS1+="\[$(tput sgr0)\]" # Reset everthing from here
+
+    else
+
+        # For non-root users
+
+        PS1+="\[$(tput bold)\]" # Set everything to bold from here
+        PS1+="$orange\u"        # Username
+        PS1+="$grey@"
+        PS1+="$green\h"         # Host
+        PS1+="$grey: "
+        PS1+="$yellow\w"        # Working directory
+        PS1+="\$(get_git_repository_details \"$grey ⚡ $cyan\")"
+        PS1+=" "
+        PS1+="\[$(tput sgr0)\]" # Reset everthing from here
+        PS1+="$ "               # Prompt
+
+    fi
+
 
     export PS1
 
