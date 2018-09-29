@@ -21,8 +21,8 @@ upgrade
 ./misc.sh
 ./misc_tools.sh
 ./../npm.sh
-./tmux.sh
 ./../neovim.sh
+./tmux.sh
 ./../tmuxifier.sh
 
 ./cleanup.sh

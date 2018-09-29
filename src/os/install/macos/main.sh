@@ -19,10 +19,10 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 ./misc.sh
 ./misc_tools.sh
 ./../npm.sh
-./tmux.sh
-./video_tools.sh
 ./../neovim.sh
+./tmux.sh
 ./../tmuxifier.sh
+./video_tools.sh
 ./web_font_tools.sh
 
 ./cleanup.sh

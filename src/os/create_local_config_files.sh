@@ -183,9 +183,9 @@ main() {
 
     create_bash_local
     create_gitconfig_local
-    create_vimrc_local
     create_gpg_conf_local
     create_ssh_config_local
+    create_vimrc_local
 
 }
 

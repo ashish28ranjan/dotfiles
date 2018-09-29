@@ -6,6 +6,6 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-print_in_purple "\n   tmux\n\n"
+print_in_purple "\n   Tmux\n\n"
 
 install_package "tmux" "tmux"
