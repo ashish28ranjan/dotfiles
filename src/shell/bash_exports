@@ -70,6 +70,14 @@ export NODE_REPL_HISTORY_SIZE=10000
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Prepend $HOME/bin to PATH, if not already exists
+
+[[ ":$PATH:" != *":$HOME/bin:"* ]] && PATH="$HOME/bin:${PATH}"
+
+export PATH
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Make new shells get the history lines from all previous
 # shells instead of the default "last window closed" history.
 
