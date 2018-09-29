@@ -6,4 +6,4 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-brew_install "neovim"
+brew_install "Neovim" "neovim"
