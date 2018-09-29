@@ -9,6 +9,7 @@ create_directories() {
 
     declare -a DIRECTORIES=(
         "$HOME/bin"
+        "$HOME/.config/tmuxifier"
         "$HOME/projects"
     )
 
