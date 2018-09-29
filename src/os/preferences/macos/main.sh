@@ -12,7 +12,6 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ./app_store.sh
-./bash.sh
 ./chrome.sh
 ./dashboard.sh
 ./dock.sh

@@ -12,8 +12,6 @@ is_desktop_enabled "$@" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-./bash.sh
-
 if $isDesktopEnabled; then
 
     ./privacy.sh
