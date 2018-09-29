@@ -23,7 +23,7 @@ create_custom_profile() {
                     cut -c 3-38))
                 #   └─ Cut out the UUID
 
-    ask_for_confirmation "'$PROFILE_NAME' profile already exists, would you iike lo skip this part?"
+    ask_for_confirmation "'$PROFILE_NAME' profile already exists, would you like to skip this part?"
 
     if answer_is_yes; then
         return 1
