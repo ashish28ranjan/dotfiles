@@ -33,7 +33,8 @@ init_backup() {
 finish_backup() {
 
     find "$BACKUP_DIR" -type d -empty |\
-        tac |\
+        sed "1!G;h;$!d" |\
+        #    └─ reverse the output, last to first
         while read dir; do \
             (rmdir --ignore-fail-on-non-empty $dir); \
         done
