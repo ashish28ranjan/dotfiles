@@ -25,6 +25,16 @@ fi
 
 install_package "Google Chrome" "google-chrome-stable"
 
-printf "\n"
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+add_ppa "ubuntu-mozilla-daily/firefox-aurora" \
+    || print_error "firefox (add ppa)"
+
+update &> /dev/null \
+    || print_error "firefox (resync package index files)"
+
+install_package "Firefox (developer edition)" "firefox"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 install_package "Flash" "flashplugin-installer"

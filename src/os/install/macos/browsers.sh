@@ -19,7 +19,7 @@ brew_install "Chrome" "google-chrome" "caskroom/cask" "cask"
 printf "\n"
 
 brew_install "Firefox" "firefox" "caskroom/cask" "cask"
-brew_install "Firefox Developer" "firefoxdeveloperedition" "caskroom/versions" "cask"
+brew_install "Firefox Developer" "firefox-developer-edition" "caskroom/versions" "cask"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
