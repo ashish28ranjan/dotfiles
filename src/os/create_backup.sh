@@ -32,7 +32,13 @@ init_backup() {
 
 finish_backup() {
 
-    find "$BACKUP_DIR" -type d -exec rmdir {} \; 2>/dev/null
+    find "$BACKUP_DIR" -type d -empty |\
+        tac |\
+        while read dir; do \
+            (rmdir --ignore-fail-on-non-empty $dir); \
+        done
+
+    rmdir --ignore-fail-on-non-empty "$BACKUP_DIR"
 
     if [ -d "$BACKUP_DIR" ]; then
         print_success "Backup created successfully"
