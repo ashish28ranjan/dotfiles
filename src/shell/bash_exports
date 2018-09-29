@@ -11,9 +11,9 @@ export EDITOR="nvim"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# Ignore commands that start with spaces and duplicates.
+# Ignore commands that are duplicates
 
-# export HISTCONTROL=ignoreboth
+export HISTCONTROL=ignoredups
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
