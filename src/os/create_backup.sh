@@ -88,7 +88,6 @@ create_backup() {
 
         "tmux/tmux.conf"
 
-        "vim/vim"
         "vim/vimrc"
 
     )
