@@ -63,3 +63,20 @@ if ! package_is_installed "redshift"; then
 
 fi
 install_package "Redshift" "redshift redshift-gtk"
+
+
+if ! package_is_installed "python3.6"; then
+
+    add_ppa "deadsnakes/ppa" \
+        || print_error "Python3 (add ppa)"
+
+    update &> /dev/null \
+        || print_error "Python3 (resync package index files)"
+
+fi
+install_package "Python3.6" "python3.6"
+
+install_package "Pip3" "python3-pip"
+
+execute "sudo -H pip3 install --upgrade pip" \
+        "Upgrade pip3"

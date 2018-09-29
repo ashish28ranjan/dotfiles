@@ -24,4 +24,9 @@ execute "chmod +x '$HOME/bin/diff-so-fancy'" \
         "diff-so-fancy"
 
 
+brew_install "Python3" "python3"
+
+execute "sudo -H pip3 install --upgrade pip" \
+        "Upgrade pip3"
+
 brew_install "iTerm2" "iterm2" "caskroom/cask" "cask"
