@@ -10,7 +10,7 @@ main() {
     print_in_purple "\n   Tmuxifier\n\n"
 
     execute \
-        "git submodule update --init --force --remote > /dev/null 2>&1" \
+        "git submodule foreach git pull origin master > /dev/null 2>&1" \
         "Update Tmuxifier"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
