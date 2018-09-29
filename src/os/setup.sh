@@ -244,7 +244,9 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    ask_for_sudo
+    if [ "$(user_has_sudo)" != "no_sudo" ]; then
+        ask_for_sudo
+    fi
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
