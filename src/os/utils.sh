@@ -389,3 +389,39 @@ show_spinner() {
     done
 
 }
+
+user_is_root () {
+    return $(id -u)
+}
+# Usage:
+# if user_is_root; then
+#     echo "Current user is root"
+# else
+#     echo "Current user is not root"
+# fi
+
+user_has_sudo() {
+    local prompt
+
+    prompt=$(sudo -nv 2>&1)
+    if [ $? -eq 0 ]; then
+        echo "has_sudo__pass_set"
+    elif echo $prompt | grep -q '^sudo:'; then
+        echo "has_sudo__needs_pass"
+    else
+        echo "no_sudo"
+    fi
+}
+# Usage:
+# HAS_SUDO=$(user_has_sudo)
+# case "$HAS_SUDO" in
+# has_sudo__pass_set)
+#     echo "User has sudo and currently has access to it"
+#     ;;
+# has_sudo__needs_pass)
+#     echo "User has sudo, but needs to enter password to access it"
+#     ;;
+# *)
+#     echo "User does not have sudo"
+#     ;;
+# esac
