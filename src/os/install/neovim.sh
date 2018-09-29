@@ -20,7 +20,6 @@ main() {
             > /dev/null 2>&1" \
         "SpaceVim (installing only for neovim)"
 
-    printf "\n"
 }
 
 main

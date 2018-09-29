@@ -48,7 +48,6 @@ main() {
 
     done
 
-    printf "\n"
 }
 
 main

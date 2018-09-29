@@ -190,6 +190,20 @@ get_os_version() {
 
 }
 
+is_desktop_enabled() {
+
+    while :; do
+        case $1 in
+            true) return 0;;
+               *) break;;
+        esac
+        shift 1
+    done
+
+    return 1
+
+}
+
 is_git_repository() {
     git rev-parse &> /dev/null
 }

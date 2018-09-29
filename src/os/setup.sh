@@ -259,6 +259,18 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+    isDesktopEnabled=true
+
+    printf "\n"
+    ask_for_confirmation "Is this machine a server?"
+
+    if answer_is_yes; then
+        isDesktopEnabled=false
+    fi
+    printf "\n"
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
     ./create_backup.sh
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -275,11 +287,11 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    ./install/main.sh
+    ./install/main.sh "$isDesktopEnabled"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    ./preferences/main.sh
+    ./preferences/main.sh "$isDesktopEnabled"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
