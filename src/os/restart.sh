@@ -5,6 +5,13 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+isDesktopEnabled=false
+
+is_desktop_enabled "$@" \
+    && isDesktopEnabled=true
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 main() {
 
     print_in_purple "\n • Restart\n\n"
@@ -18,4 +25,8 @@ main() {
 
  }
 
- main
+if [ "$(user_has_sudo)" != "no_sudo" ] && $isDesktopEnabled; then
+
+	main
+
+fi

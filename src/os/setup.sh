@@ -312,7 +312,7 @@ main() {
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     if ! $skipQuestions; then
-        ./restart.sh
+        ./restart.sh "$isDesktopEnabled"
     fi
 
 }
