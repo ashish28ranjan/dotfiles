@@ -20,9 +20,6 @@ main() {
 
     create_symlink "$sourceFile" "$targetFile"
 
-    execute "export TMUXIFIER_LAYOUT_PATH='$HOME/.config/tmuxifier'" \
-            "Layout path: '$HOME/.config/tmuxifier'"
-
     declare -a FILES_TO_COPY=(
 
         "tmuxifier/examples/example.session.sh"
@@ -39,12 +36,7 @@ main() {
         sourceFile="$(cd ../.. && pwd)/$i"
         targetFile="$HOME/.config/tmuxifier/$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
 
-        if [ -f $targetFile ]; then
-            print_success "Created: $targetFile"
-        else
-            execute "cp -a $sourceFile $targetFile" \
-                "Created: $targetFile"
-        fi
+        create_symlink "$sourceFile" "$targetFile"
 
     done
 

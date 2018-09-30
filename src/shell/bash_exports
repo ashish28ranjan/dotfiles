@@ -88,3 +88,9 @@ export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 # Make Python use UTF-8 encoding for output to stdin/stdout/stderr.
 
 export PYTHONIOENCODING="UTF-8"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Set TMUXIFIER_LAYOUT_PATH
+
+export TMUXIFIER_LAYOUT_PATH="$HOME/.config/tmuxifier"
