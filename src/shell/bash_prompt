@@ -123,11 +123,11 @@ set_prompts() {
         emerald="\[$(tput setaf 70)\]"
         green="\[$(tput setaf 64)\]"
         grey="\[$(tput setaf 247)\]"
-        orange="\[$(tput setaf 130)\]"
+        orange="\[$(tput setaf 166)\]"
         purple="\[$(tput setaf 99)\]"
         red="\[$(tput setaf 203)\]"
         white="\[$(tput setaf 15)\]"
-        yellow="\[$(tput setaf 136)\]"
+        yellow="\[$(tput setaf 172)\]"
 
 
     fi
