@@ -109,7 +109,7 @@ create_custom_profile() {
     dconf write "$DCONF_DIR/:$UUID/foreground-color" "'rgb(187,187,187)'"
     dconf write "$DCONF_DIR/:$UUID/palette" "['rgb(0,0,0)', 'rgb(204,0,0)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rgb(52,101,164)', 'rgb(117,80,123)', 'rgb(6,152,154)', 'rgb(211,215,207)', 'rgb(85,87,83)', 'rgb(239,41,41)', 'rgb(138,226,52)', 'rgb(252,233,79)', 'rgb(114,159,207)', 'rgb(173,127,168)', 'rgb(52,226,226)', 'rgb(238,238,236)']"
 
-    dconf write "$DCONF_DIR/:$UUID/font" "'Ubuntu Mono 14'"
+    dconf write "$DCONF_DIR/:$UUID/font" "'Ubuntu Mono 15'"
 
     dconf write "$DCONF_DIR/:$UUID/allow-bold" "true"
     dconf write "$DCONF_DIR/:$UUID/bold-color-same-as-fg" "true"
