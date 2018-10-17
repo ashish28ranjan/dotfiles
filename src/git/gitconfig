@@ -14,7 +14,8 @@
     f    = fetch
     git  = !exec git                        # Allow `$ git git git...`
     s    = status
-    r    = remote
+    rs   = reset
+    rmt  = remote
 
     # Kaleidoscope commands
     dkal = difftool -y -t Kaleidoscope
