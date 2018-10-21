@@ -91,7 +91,7 @@ get_git_repository_details() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    printf "%s" "$1$branchName$tmp"
+    printf "%s" "$1$branchName$tmp "
 
 }
 
@@ -104,6 +104,7 @@ set_prompts() {
     local green=""
     local grey=""
     local orange=""
+    local pink=""
     local purple=""
     local red=""
     local white=""
@@ -124,6 +125,7 @@ set_prompts() {
         green="\[$(tput setaf 64)\]"
         grey="\[$(tput setaf 247)\]"
         orange="\[$(tput setaf 166)\]"
+        pink="\[$(tput setaf 206)\]"
         purple="\[$(tput setaf 99)\]"
         red="\[$(tput setaf 203)\]"
         white="\[$(tput setaf 15)\]"
@@ -141,39 +143,70 @@ set_prompts() {
     # | PS1 - Default interactive prompt                               |
     # ------------------------------------------------------------------
 
-    PS1="\[\033]0;\W\007\]" # Terminal title (set to the
-                            # current working directory)
-
-    if [ $(id -u) -eq 0 ]; then
-
+    if user_is_root; then
         # For root users
 
-        PS1+="\[$(tput bold)\]" # Set everything to bold from here
-        PS1+="$red\u"           # Username
-        PS1+="$grey@"
-        PS1+="$red\h"           # Host
-        PS1+="$grey:"
-        PS1+="$emerald\w"       # Working directory
-        PS1+="$red# "           # Prompt
-        PS1+="\[$(tput sgr0)\]" # Reset everthing from here
-
+        local user_color="$red"
+        local host_color="$red"
+        local dir_color="$emerald"
+        local prompt_color="$red"
+        local prompt_value="#"
+ 
     else
-
         # For non-root users
-
-        PS1+="\[$(tput bold)\]" # Set everything to bold from here
-        PS1+="$orange\u"        # Username
-        PS1+="$grey@"
-        PS1+="$green\h"         # Host
-        PS1+="$grey: "
-        PS1+="$yellow\w"        # Working directory
-        PS1+="\$(get_git_repository_details \"$grey ⚡ $cyan\")"
-        PS1+=" "
-        PS1+="\[$(tput sgr0)\]" # Reset everthing from here
-        PS1+="$ "               # Prompt
-
+ 
+        local user_color="$orange"
+        local host_color="$green"
+        local dir_color="$yellow"
+        local prompt_color="$pink"
+        local prompt_value="\$"
     fi
 
+    PS1="\[\033]0;\W\007\]" # Terminal title (set to the
+                            # current working directory)
+    PS1+="\[$(tput bold)\]" # Set everything to bold from here
+
+    case $1 in
+        "")
+            PS1+="$user_color\u"        # Username
+            PS1+="$grey@"
+            PS1+="$host_color\h"        # Host
+            PS1+="$grey: "
+            ;&
+        "" | "mini" | "micro")
+            PS1+="$dir_color\w "        # Working directory
+            ;;
+        "nano")
+            PS1+="$dir_color\W "        # Basename of working directory
+            ;;
+    esac
+
+    # Fetch git repository details
+    case $1 in
+        "")
+            PS1+="\$(get_git_repository_details \"$grey⚡ $cyan\")"
+            ;;
+        "mini" | "micro" | "nano")
+            if [ "$2" = "git" ]; then
+                PS1+="\$(get_git_repository_details \"$grey⚡ $cyan\")"
+            fi
+            ;;
+        "pico")
+            if [ "$2" = "git" ]; then
+                PS1+="\$(get_git_repository_details \"$grey$cyan\")"
+            fi
+            ;;
+    esac
+
+    PS1+="$prompt_color$prompt_value "  # Prompt
+
+    PS1+="\[$(tput sgr0)\]"             # Reset everthing from here
+
+    if [ "$1" = "micro" ]; then
+        export PROMPT_DIRTRIM=2
+    else
+        unset PROMPT_DIRTRIM
+    fi
 
     export PS1
 
@@ -241,4 +274,3 @@ main
 
 unset -f enable_color_support
 unset -f main
-unset -f set_prompts
