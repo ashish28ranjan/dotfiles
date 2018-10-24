@@ -151,10 +151,10 @@ set_prompts() {
         local dir_color="$emerald"
         local prompt_color="$red"
         local prompt_value="#"
- 
+
     else
         # For non-root users
- 
+
         local user_color="$orange"
         local host_color="$green"
         local dir_color="$yellow"
