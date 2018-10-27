@@ -63,6 +63,7 @@ create_full_path_symlinks() {
         "gnupg/gpg.conf"
         "gnupg/gpg-agent.conf"
 
+        "config/redshift.conf"
     )
 
     # This will create a file $HOME/.gnupg/gpg.conf
