@@ -24,8 +24,9 @@ main() {
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     # Space-vim
-    install_spacevim()
-    unset -f install_spacevim()
+    install_spacevim
+
+    unset -f install_spacevim
 
 }
 
