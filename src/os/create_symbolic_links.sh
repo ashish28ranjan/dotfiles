@@ -28,6 +28,7 @@ create_symlinks() {
         "tmux/tmux.conf"
 
         "vim/vimrc"
+        "vim/spacevim"
 
     )
 
