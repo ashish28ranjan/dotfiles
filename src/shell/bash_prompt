@@ -126,7 +126,7 @@ set_prompts() {
         grey="\[$(tput setaf 247)\]"
         orange="\[$(tput setaf 166)\]"
         pink="\[$(tput setaf 206)\]"
-        purple="\[$(tput setaf 99)\]"
+        purple="\[$(tput setaf 98)\]"
         red="\[$(tput setaf 203)\]"
         white="\[$(tput setaf 15)\]"
         yellow="\[$(tput setaf 172)\]"
@@ -174,10 +174,24 @@ set_prompts() {
             PS1+="$grey: "
             ;&
         "" | "mini" | "micro")
-            PS1+="$dir_color\w "        # Working directory
+            if [ -n "$NIX_BINTOOLS" ]; then
+              PS1+="$purple["
+            fi
+            PS1+="$dir_color\w"        # Working directory
+            if [ -n "$NIX_BINTOOLS" ]; then
+              PS1+="$purple]"
+            fi
+            PS1+=" "
             ;;
         "nano")
-            PS1+="$dir_color\W "        # Basename of working directory
+            if [ -n "$NIX_BINTOOLS" ]; then
+              PS1+="$purple["
+            fi
+            PS1+="$dir_color\W"        # Basename of working directory
+            if [ -n "$NIX_BINTOOLS" ]; then
+              PS1+="$purple]"
+            fi
+            PS1+=" "
             ;;
     esac
 
