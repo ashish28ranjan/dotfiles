@@ -5,6 +5,16 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+install_spacevim() {
+
+  execute \
+    "git clone https://github.com/liuchengxu/space-vim.git $HOME/.space-vim \
+      && cd $HOME/.space-vim \
+      && make neovim" \
+    "Space-Vim (installing only for neovim)"
+
+}
+
 main() {
 
     print_in_purple "\n   Neovim\n\n"
@@ -13,12 +23,9 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    # Spacevim
-
-    execute \
-        "curl -sLf https://spacevim.org/install.sh | bash -s -- --install neovim \
-            > /dev/null 2>&1" \
-        "SpaceVim (installing only for neovim)"
+    # Space-vim
+    install_spacevim()
+    unset -f install_spacevim()
 
 }
 
