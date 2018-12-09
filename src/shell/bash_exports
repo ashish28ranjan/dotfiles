@@ -55,9 +55,10 @@ export LESS_TERMCAP_us=$(printf "\e[1;32m")
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# Don't clear the screen after quitting a `man` page.
+# Set tab width to 4.
+# Highlight searches and ignore case.
 
-# export MANPAGER="less -X"
+export MANPAGER="less --tabs=4 --ignore-case --hilite-search --squeeze-blank-lines"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
