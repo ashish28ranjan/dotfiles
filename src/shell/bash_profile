@@ -55,6 +55,11 @@ unset -f source_bash_files
 # Source fzf
 [ -f $HOME/.fzf.bash ] && source $HOME/.fzf.bash
 
+# Source nix
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+  . $HOME/.nix-profile/etc/profile.d/nix.sh;
+fi
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Clear system messages (system copyright notice, the date
