@@ -1,0 +1,8 @@
+| Windows Dialog　　　　　　　　　　　　　　  　    [－] [口] [×] |
+| ￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣ ￣ |
+|　Windows has detected that this song is awesome!                |
+|     Do you agree? 　　　　　　                                  |
+|　 　　＿＿＿＿＿＿　　　　＿＿＿＿＿＿　　　　＿＿＿＿＿　　    |
+| 　 　｜　  Yes　 ｜　　　｜　Maybe　 ｜ 　   ｜   No　 ｜       |
+|　 　　￣￣￣￣￣￣　　　　￣￣￣￣￣￣　　　　￣￣￣￣￣　      |
+|＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿ __ _|

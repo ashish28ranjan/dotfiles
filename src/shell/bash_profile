@@ -67,3 +67,16 @@ fi
 
 clear
 
+# Print a random ascii art
+asciiart
+
+# Print the welcome message
+printf "\n"
+print_in_yellow " ##########################################\n"
+print_in_yellow " ##                                      ##\n"
+print_in_yellow " ##  Welcome back, Firelord              ##\n"
+print_in_yellow " ##  Your kingdom is ready to serve you  ##\n"
+print_in_yellow " ##                                      ##\n"
+print_in_yellow " ##########################################\n"
+printf "\n"
+

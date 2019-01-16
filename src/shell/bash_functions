@@ -2,6 +2,36 @@
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Print a random ascii art
+
+asciiart() {
+
+    local asciiFile=""
+    local asciiFilePath=""
+
+    local source="${BASH_SOURCE[0]}"
+		local scriptPath=""
+    while [ -h "$source"  ]; do # resolve $source until the file is no longer a symlink
+        scriptPath="$( cd -P "$( dirname "$source"  )" >/dev/null 2>&1 && pwd  )"
+          source="$(readlink "$source")"
+            [[ $source != /*  ]] && source="$scriptPath/$source" # if $source was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+          done
+          scriptPath="$( cd -P "$( dirname "$source"  )" >/dev/null 2>&1 && pwd  )"
+
+    asciiFilePath="$scriptPath/asciiarts/$(ls -p "$scriptPath/asciiarts"/ | grep -v / | sort -R | tail -1)"
+
+    printf "\n"
+
+		while IFS='' read -r line || [[ -n "$line"  ]]; do
+				echo "            $line"
+    done < "$asciiFilePath"
+
+    printf "\n"
+
+}
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Create data URI from a file.
 
 datauri() {
