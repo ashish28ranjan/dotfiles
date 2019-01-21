@@ -27,8 +27,8 @@ create_symlinks() {
 
         "tmux/tmux.conf"
 
+        "vim/vim"
         "vim/vimrc"
-        "vim/spacevim"
 
     )
 
@@ -61,10 +61,11 @@ create_full_path_symlinks() {
 
     declare -a FILES_TO_SYMLINK=(
 
+        "config/nvim/init.vim"
+        "config/redshift.conf"
+
         "gnupg/gpg.conf"
         "gnupg/gpg-agent.conf"
-
-        "config/redshift.conf"
     )
 
     # This will create a file $HOME/.gnupg/gpg.conf

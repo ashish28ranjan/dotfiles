@@ -88,6 +88,7 @@ create_backup() {
 
         "tmux/tmux.conf"
 
+        "vim/vim"
         "vim/vimrc"
 
     )
@@ -110,6 +111,8 @@ create_backup() {
 create_full_path_backup() {
 
     declare -a FILES_TO_BACKUP=(
+
+        "config/nvim/init.vim"
 
         "gnupg/gpg.conf"
         "gnupg/gpg-agent.conf"
