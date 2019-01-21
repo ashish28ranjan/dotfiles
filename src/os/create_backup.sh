@@ -113,6 +113,7 @@ create_full_path_backup() {
     declare -a FILES_TO_BACKUP=(
 
         "config/nvim/init.vim"
+        "config/redshift.conf"
 
         "gnupg/gpg.conf"
         "gnupg/gpg-agent.conf"
