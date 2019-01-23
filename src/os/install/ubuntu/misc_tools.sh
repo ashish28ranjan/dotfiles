@@ -9,6 +9,9 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 print_in_purple "\n   Miscellaneous Tools\n\n"
 
 
+install_package "aria2" "aria2"
+
+
 install_package "cURL" "curl"
 
 
