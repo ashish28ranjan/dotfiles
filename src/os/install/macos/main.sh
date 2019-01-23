@@ -19,6 +19,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 ./misc_tools.sh
 ./../npm.sh
 ./../neovim.sh
+./../pyenv.sh
 ./tmux.sh
 ./../tmuxifier.sh
 ./video_tools.sh

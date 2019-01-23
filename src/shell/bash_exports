@@ -86,6 +86,12 @@ export PROMPT_COMMAND="history -a;"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Set PYENV_ROOT
+
+export PYENV_ROOT="$HOME/.pyenv"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Make Python use UTF-8 encoding for output to stdin/stdout/stderr.
 
 export PYTHONIOENCODING="UTF-8"
