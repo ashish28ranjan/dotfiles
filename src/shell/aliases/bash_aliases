@@ -21,6 +21,7 @@ alias map="xargs -n1"
 alias n="npm"
 alias path='printf "%b\n" "${PATH//:/\\n}"'
 alias pe='pyenv'
+alias p='python'
 alias rmf="rm -rf"
 alias v="nvim"
 alias y="yarn"
