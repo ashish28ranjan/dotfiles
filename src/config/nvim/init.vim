@@ -488,6 +488,12 @@ let mapleader = " "
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+" [<TAB>] Deoplete tab completion.
+
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 " [<SPC>bd] Delete buffer without closing window mapping.
 
 nmap <leader>bd :Kwbd<CR>
@@ -636,7 +642,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'NLKNguyen/papercolor-theme'
   Plug 'rgarver/Kwbd.vim'
   Plug 'roman/golden-ratio'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'szw/vim-maximizer'
+  Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
   Plug 'vim-scripts/ShowTrailingWhitespace'
@@ -658,6 +666,15 @@ call ChangeTheme(1)            " Change theme
                                " 1 = PaperColor
                                " 2 = Neodark
 
+
+
+" ----------------------------------------------------------------------
+" | Plugins - Deoplete                                                |
+" ----------------------------------------------------------------------
+
+" Enable at startup
+
+let g:deoplete#enable_at_startup = 1
 
 
 " ----------------------------------------------------------------------
