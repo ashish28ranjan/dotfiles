@@ -150,7 +150,6 @@ verify_os() {
 
     declare -r MINIMUM_MACOS_VERSION="10.10"
     declare -r MINIMUM_UBUNTU_VERSION="14.04"
-    declare -r MINIMUM_TRISQUEL_VERSION="8.0"
     declare -r MINIMUM_DEBIAN_VERSION="9.6"
 
     local os_distribution=""
@@ -175,14 +174,6 @@ verify_os() {
             printf "Sorry, this script is intended only for Ubuntu %s+" "$MINIMUM_UBUNTU_VERSION"
         fi
 
-    elif [ "$os_distribution" == "Trisquel" ]; then
-
-        if is_supported_version "$os_version" "$MINIMUM_TRISQUEL_VERSION"; then
-            return 0
-        else
-            printf "Sorry, this script is intended only for Trisquel %s+" "$MINIMUM_TRISQUEL_VERSION"
-        fi
-
     elif [ "$os_distribution" == "Debian" ]; then
 
         if is_supported_version "$os_version" "$MINIMUM_DEBIAN_VERSION"; then
@@ -193,7 +184,7 @@ verify_os() {
 
     else
 
-        printf "Sorry, this script is intended only for macOS, Ubuntu, Trisquel & Debian!"
+        printf "Sorry, this script is intended only for macOS, Ubuntu & Debian!"
 
     fi
 
