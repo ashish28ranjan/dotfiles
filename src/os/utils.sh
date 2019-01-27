@@ -154,6 +154,7 @@ get_os() {
 
     local os=""
     local kernelName=""
+    local distribution=""
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -162,9 +163,12 @@ get_os() {
     if [ "$kernelName" == "Darwin" ]; then
         os="macos"
     elif [ "$kernelName" == "Linux" ]; then
-        if [ -e "/etc/lsb-release" ]; then
+
+        distribution="$(lsb_release -i | cut -f2)"
+
+        if [ "$distribution" == "Ubuntu" ]; then
             os="ubuntu"
-        else
+        elif [ "$distribution" == "Debian" ]; then
             os="debian"
         fi
     fi
