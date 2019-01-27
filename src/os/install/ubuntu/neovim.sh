@@ -6,14 +6,15 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-if ! package_is_installed "neovim"; then
+if [ ! -f "$HOME/bin/nvim" ]; then
 
-    add_ppa "neovim-ppa/stable" \
-        || print_error "Neovim (add ppa)"
+    execute "wget -qO '$HOME/bin/nvim' 'https://github.com/neovim/neovim/releases/download/v0.3.4/nvim.appimage' &> /dev/null \
+        && chmod +x '$HOME/bin/nvim'" \
+        "Neovim"
 
-    update &> /dev/null \
-        || print_error "Neovim (resync package index files)"
+else
+
+    execute "chmod +x '$HOME/bin/nvim'" \
+            "Neovim"
 
 fi
-
-install_package "Neovim" "neovim"
