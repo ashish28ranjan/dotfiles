@@ -130,10 +130,9 @@ function! ChangeTheme(themeId)
 
     if ( a:themeId == 1 )
 
-        " PaperColor theme
+        " Light theme
 
         set background=light           " Use colors that look good
-        silent! colorscheme PaperColor " Use custom color scheme.
 
         highlight ColorColumn
             \ term=NONE
@@ -145,18 +144,6 @@ function! ChangeTheme(themeId)
             \ term=NONE
             \ cterm=NONE  ctermbg=NONE   ctermfg=246
             \ gui=NONE    guibg=NONE     guifg=#949494
-
-        " Highlight current word (vim_current_word)
-        highlight CurrentWord
-            \ term=NONE
-            \ cterm=underline  ctermbg=220    ctermfg=NONE
-            \ gui=underline    guibg=#ffd700  guifg=NONE
-
-         " Highlight twin word (vim_current_word)
-        highlight CurrentWordTwins
-            \ term=NONE
-            \ cterm=underline  ctermbg=252    ctermfg=NONE
-            \ gui=underline    guibg=#c6c6c6  guifg=NONE
 
         highlight CursorLine
             \ term=NONE
@@ -172,6 +159,11 @@ function! ChangeTheme(themeId)
             \ term=NONE
             \ cterm=NONE  ctermbg=NONE   ctermfg=249
             \ gui=NONE    guibg=#073642  guifg=#839497
+
+        highlight Normal
+            \ term=NONE
+            \ cterm=NONE  ctermbg=white  ctermfg=236
+            \ gui=NONE    guibg=white    guifg=#303030
 
         " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -209,13 +201,9 @@ function! ChangeTheme(themeId)
 
     else
 
-        " Neodark theme
+        " Dark theme
 
-        silent! colorscheme neodark    " Use custom color scheme.
-
-        let g:neodark#use_256color = 1
-        let g:neodark#background = '#202020'
-        let g:neodark#solid_vertsplit = 1
+        set background=light           " Use colors that look good
 
         highlight ColorColumn
             \ term=NONE
@@ -228,21 +216,9 @@ function! ChangeTheme(themeId)
             \ cterm=NONE  ctermbg=NONE   ctermfg=242
             \ gui=NONE    guibg=NONE     guifg=#585858
 
-        " Highlight current word (vim_current_word)
-        highlight CurrentWord
-            \ term=NONE
-            \ cterm=underline  ctermbg=53     ctermfg=NONE
-            \ gui=underline    guibg=#5f005f  guifg=NONE
-
-         " Highlight twin word (vim_current_word)
-        highlight CurrentWordTwins
-            \ term=NONE
-            \ cterm=underline  ctermbg=238    ctermfg=NONE
-            \ gui=underline    guibg=#444444  guifg=NONE
-
         highlight CursorLine
             \ term=NONE
-            \ cterm=NONE  ctermbg=239    ctermfg=NONE
+            \ cterm=NONE  ctermbg=238    ctermfg=NONE
             \ gui=NONE    guibg=#4e4e4e  guifg=NONE
 
         highlight CursorLineNr
@@ -254,6 +230,11 @@ function! ChangeTheme(themeId)
             \ term=NONE
             \ cterm=NONE  ctermbg=NONE   ctermfg=241
             \ gui=NONE    guibg=NONE     guifg=#b2b2b2
+
+        highlight Normal
+            \ term=NONE
+            \ cterm=NONE  ctermbg=235    ctermfg=250
+            \ gui=NONE    guibg=#262626  guifg=#d0d0d0
 
         " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -290,21 +271,6 @@ function! ChangeTheme(themeId)
             \ gui=NONE    guibg=#c6c6c6  guifg=NONE
 
     endif
-
-endfunction
-
-" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-function! GetGitBranchName()
-
-    let branchName = ""
-    let l:fugitiveHead = fugitive#head()
-
-    if ( l:fugitiveHead != "" )
-        let branchName = "[" . fugitive#head() . "]\ "
-    endif
-
-    return branchName
 
 endfunction
 
@@ -494,12 +460,6 @@ nmap <leader>bd :Kwbd<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-" [<SPC>bh] Launch Startify homescreen.
-
-nmap <leader>bh :Startify<CR>
-
-" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 " [<SPC>bn] Next buffer.
 
 nmap <leader>bn :bnext<CR>
@@ -524,12 +484,6 @@ nmap <leader>ev :vsp $MYVIMRC<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-" [<SPC>ff] Open CtrlP in file find mode.
-
-nmap <leader>ff :CtrlP<CR>
-
-" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 " [<SPC>sh] Show hex dump.
 
 nmap <leader>sh :%!xxd<CR>
@@ -551,12 +505,6 @@ nmap <leader>ss :call StripTrailingWhitespaces()<CR>
 " [<SPC>td] Toggle display of hidden characters.
 
 nmap <leader>td :set list!<CR>
-
-" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-" [<SPC>tg] Toggle Git differences.
-
-nmap <leader>tg :GitGutterToggle<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -625,21 +573,9 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-  Plug 'airblade/vim-gitgutter'
-  Plug 'blueyed/vim-diminactive'
-  Plug 'ctrlpvim/ctrlp.vim'
-  Plug 'dominikduda/vim_current_word'
-  Plug 'farmergreg/vim-lastplace'
-  Plug 'junegunn/rainbow_parentheses.vim'
-  Plug 'KeitaNakamura/neodark.vim'
-  Plug 'mhinz/vim-startify'
-  Plug 'NLKNguyen/papercolor-theme'
   Plug 'rgarver/Kwbd.vim'
-  Plug 'roman/golden-ratio'
   Plug 'szw/vim-maximizer'
   Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-fugitive'
-  Plug 'vim-scripts/ShowTrailingWhitespace'
   Plug 'Yggdroot/indentLine'
   Plug 'zhou13/vim-easyescape'
 
@@ -661,59 +597,11 @@ call ChangeTheme(1)            " Change theme
 
 
 " ----------------------------------------------------------------------
-" | Plugins - Gitgutter                                                |
-" ----------------------------------------------------------------------
-
-" Disable Gitgutter by default.
-" https://github.com/airblade/vim-gitgutter
-
-let g:gitgutter_enabled = 0
-
-
-" ----------------------------------------------------------------------
 " | Plugins - indentLine                                               |
 " ----------------------------------------------------------------------
 
 " Set the indent character guide
 let g:indentLine_char = '▏'
-
-
-" ----------------------------------------------------------------------
-" | Plugins - Rainbow parentheses                                   |
-" ----------------------------------------------------------------------
-
-" Set custom color of parentheses
-
-highlight rainbowParensShell1   ctermfg=177  guifg=#d787ff
-highlight rainbowParensShell2   ctermfg=36   guifg=#00af87
-highlight rainbowParensShell3   ctermfg=167  guifg=#d75f5f
-highlight rainbowParensShell4   ctermfg=169  guifg=#d75faf
-highlight rainbowParensShell5   ctermfg=111  guifg=#87afff
-highlight rainbowParensShell6   ctermfg=208  guifg=#ff8700
-highlight rainbowParensShell7   ctermfg=207  guifg=#ff5fff
-highlight rainbowParensShell8   ctermfg=148  guifg=#afd700
-highlight rainbowParensShell9   ctermfg=45   guifg=#00d7ff
-highlight rainbowParensShell10  ctermfg=197  guifg=#ff005f
-highlight rainbowParensShell11  ctermfg=222  guifg=#ffd787
-highlight rainbowParensShell12  ctermfg=43   guifg=#00d7af
-highlight rainbowParensShell13  ctermfg=213  guifg=#ff87ff
-highlight rainbowParensShell14  ctermfg=179  guifg=#d7af5f
-highlight rainbowParensShell15  ctermfg=74   guifg=#5fafd7
-highlight rainbowParensShell16  ctermfg=168  guifg=#d75f87
-
-" Enable rainbow parentheses on startup
-
-call rainbow_parentheses#activate()
-
-
-" ----------------------------------------------------------------------
-" | Plugins - ShowTrailingWhitespace                                   |
-" ----------------------------------------------------------------------
-
-" Set highlight color to red.
-" https://www.vim.org/scripts/script.php?script_id=3966
-
-highlight ShowTrailingWhitespace ctermbg=Red guibg=Red
 
 
 
@@ -742,8 +630,7 @@ set statusline+=%r             " Readonly flag
 set statusline+=%h             " Help file flag
 set statusline+=%w\            " Preview window flag
 set statusline+=%#SLFilePath#  " Filepath highlight
-set statusline+=\ %{GetGitBranchName()}  " Git branch name
-set statusline+=%f\            " File path
+set statusline+=\ %f\            " File path
 set statusline+=%#SLSeparator# " Separator highlight
 set statusline+=%=             " Left/Right separator
 set statusline+=%#SLFileType#  " Filetype highlight
