@@ -164,7 +164,7 @@ get_os() {
         os="macos"
     elif [ "$kernelName" == "Linux" ]; then
 
-        distribution="$(lsb_release -i | cut -f2)"
+        distribution="$(lsb_release -si)"
 
         if [ "$distribution" == "Ubuntu" ]; then
             os="ubuntu"
@@ -189,7 +189,7 @@ get_os_distribution() {
     if [ "$kernelName" == "Darwin" ]; then
         distribution="Mac"
     elif [ "$kernelName" == "Linux" ]; then
-        distribution="$(lsb_release -i | cut -f2)"
+        distribution="$(lsb_release -si)"
     fi
 
     printf "%s" "$distribution"
@@ -208,9 +208,9 @@ get_os_version() {
     if [ "$os" == "macos" ]; then
         version="$(sw_vers -productVersion)"
     elif [ "$os" == "ubuntu" ]; then
-        version="$(lsb_release -r | cut -f2)"
+        version="$(lsb_release -sr)"
     elif [ "$os" == "debian" ]; then
-        version="$(lsb_release -r | cut -f2)"
+        version="$(lsb_release -sr)"
     fi
 
     printf "%s" "$version"
