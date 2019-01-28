@@ -577,7 +577,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'szw/vim-maximizer'
   Plug 'tpope/vim-commentary'
   Plug 'Yggdroot/indentLine'
-  Plug 'zhou13/vim-easyescape'
 
 " Initialize plugin system
 call plug#end()
