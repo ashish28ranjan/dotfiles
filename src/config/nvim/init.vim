@@ -488,6 +488,13 @@ let mapleader = " "
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+" [jk/kj] Easy escape in insert mode
+
+imap jk <Esc>
+imap kj <Esc>
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 " [<TAB>] Deoplete tab completion.
 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -635,11 +642,14 @@ call plug#begin('~/.vim/plugged')
   Plug 'blueyed/vim-diminactive'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'dominikduda/vim_current_word'
+  Plug 'editorconfig/editorconfig-vim'
   Plug 'farmergreg/vim-lastplace'
+  Plug 'jeetsukumaran/vim-filebeagle'
   Plug 'junegunn/rainbow_parentheses.vim'
   Plug 'KeitaNakamura/neodark.vim'
   Plug 'mhinz/vim-startify'
   Plug 'NLKNguyen/papercolor-theme'
+  Plug 'raimondi/delimitmate'
   Plug 'rgarver/Kwbd.vim'
   Plug 'roman/golden-ratio'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -647,9 +657,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-unimpaired'
+  Plug 'wellle/targets.vim'
   Plug 'vim-scripts/ShowTrailingWhitespace'
   Plug 'Yggdroot/indentLine'
-  Plug 'zhou13/vim-easyescape'
 
 " Initialize plugin system
 call plug#end()
