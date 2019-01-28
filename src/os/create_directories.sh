@@ -12,6 +12,7 @@ create_directories() {
         "$HOME/.config/tmuxifier"
         "$HOME/bin"
         "$HOME/projects"
+        "$HOME/tools"
     )
 
     for i in "${DIRECTORIES[@]}"; do
