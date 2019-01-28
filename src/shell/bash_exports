@@ -73,7 +73,8 @@ export NODE_REPL_HISTORY_SIZE=10000
 
 # Prepend $HOME/bin to PATH, if not already exists
 
-[[ ":$PATH:" != *":$HOME/bin:"* ]] && PATH="$HOME/bin:${PATH}"
+[[ ":$PATH:" != *":$HOME/bin:"* ]] \
+    && PATH="$HOME/bin:${PATH}"
 
 export PATH
 
