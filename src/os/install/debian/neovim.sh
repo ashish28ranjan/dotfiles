@@ -6,15 +6,24 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-if [ ! -f "$HOME/bin/nvim" ]; then
+main() {
 
-    execute "wget -qO '$HOME/bin/nvim' 'https://github.com/neovim/neovim/releases/download/v0.3.4/nvim.appimage' &> /dev/null \
-        && chmod +x '$HOME/bin/nvim'" \
-        "Neovim"
+    local sourceFile="$HOME/tools/nvim-linux64/bin/nvim"
+    local targetFile="$HOME/bin/nvim"
 
-else
+    if [ ! -f "$sourceFile" ]; then
 
-    execute "chmod +x '$HOME/bin/nvim'" \
-            "Neovim"
+        local zipFile="$HOME/tools/nvim-linux64.tar.gz"
 
-fi
+        execute "wget -qO $zipFile 'https://github.com/neovim/neovim/releases/download/v0.3.4/nvim-linux64.tar.gz' &> /dev/null \
+            && tar xzf $zipFile -C '$HOME/tools' \
+            && rm $zipFile &> /dev/null" \
+            "Download and extract"
+
+    fi
+
+    create_symlink "$sourceFile" "$targetFile"
+
+}
+
+main
