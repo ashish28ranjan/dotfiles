@@ -48,11 +48,15 @@ install_package "Brave (stable)" "brave-browser brave-keyring"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-add_ppa "mozillateam/firefox-next" \
-    || print_error "firefox (add ppa)"
+if ! package_is_installed "firefox"; then
 
-update &> /dev/null \
-    || print_error "firefox (resync package index files)"
+    add_ppa "mozillateam/firefox-next" \
+        || print_error "firefox (add ppa)"
+
+    update &> /dev/null \
+        || print_error "firefox (resync package index files)"
+
+fi
 
 install_package "Firefox (beta)" "firefox"
 
