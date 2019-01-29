@@ -597,9 +597,9 @@ nmap <leader>tw :set wrap!<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-" [<SPC>ww] Create new vertically split window.
+" [<SPC>w2] Create new vertically split window.
 
-nmap <leader>ww :vs<CR>
+nmap <leader>w2 :vs<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
