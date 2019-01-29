@@ -27,13 +27,13 @@ install_package "Google Chrome" "google-chrome-stable"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-add_ppa "ubuntu-mozilla-daily/firefox-aurora" \
+add_ppa "mozillateam/firefox-next" \
     || print_error "firefox (add ppa)"
 
 update &> /dev/null \
     || print_error "firefox (resync package index files)"
 
-install_package "Firefox (developer edition)" "firefox"
+install_package "Firefox (beta)" "firefox"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
