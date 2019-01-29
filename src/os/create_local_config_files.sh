@@ -70,7 +70,17 @@ create_vimrc_local() {
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     if [ ! -e "$FILE_PATH" ]; then
-        printf "" >> "$FILE_PATH"
+        printf "%s\n" \
+"\" ----------------------------------------------------------------------
+\" | Plugins - nvim-python                                               |
+\" ----------------------------------------------------------------------
+
+\" Set the path to the python executables
+
+let g:python_host_prog = '$HOME/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '$HOME/.pyenv/versions/neovim3/bin/python'
+"\
+        >> "$FILE_PATH"
     fi
 
     print_result $? "$FILE_PATH"

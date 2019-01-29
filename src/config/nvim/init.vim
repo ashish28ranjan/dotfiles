@@ -688,6 +688,7 @@ call ChangeTheme(1)            " Change theme
 
 let g:ackprg = 'ag --vimgrep'
 
+
 " ----------------------------------------------------------------------
 " | Plugins - CtrlP
 " ----------------------------------------------------------------------
@@ -707,6 +708,7 @@ let g:ctrlp_user_command = {
   \   },
   \   'fallback': 'ag %s -l --nocolor -g "" --ignore .git --ignore node_modules --ignore tools'
   \ }
+
 
 " ----------------------------------------------------------------------
 " | Plugins - Deoplete                                                |
@@ -733,16 +735,6 @@ let g:gitgutter_enabled = 0
 
 " Set the indent character guide
 let g:indentLine_char = '▏'
-
-
-" ----------------------------------------------------------------------
-" | Plugins - nvim-python                                               |
-" ----------------------------------------------------------------------
-
-" Set the path to the python executables
-
-let g:python_host_prog = '/home/bro/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/home/bro/.pyenv/versions/neovim3/bin/python'
 
 
 " ----------------------------------------------------------------------
