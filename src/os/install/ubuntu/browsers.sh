@@ -29,7 +29,7 @@ install_package "Google Chrome" "google-chrome-stable"
 
 if ! package_is_installed "brave-browser"; then
 
-    local os_codename="$(lsb_release -sc)"
+    os_codename="$(lsb_release -sc)"
 
     add_key "https://brave-browser-apt-release.s3.brave.com/brave-core.asc" \
         || print_error "Brave browser (add key)"
