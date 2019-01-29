@@ -537,9 +537,9 @@ nmap <leader>ev :vsp $MYVIMRC<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-" [<SPC>ff] Open CtrlP in file find mode.
+" [<SPC>fd] Open CtrlP in file find mode.
 
-nmap <leader>ff :CtrlP<CR>
+nmap <leader>fd :CtrlP<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
