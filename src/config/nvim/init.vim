@@ -679,6 +679,25 @@ call ChangeTheme(1)            " Change theme
                                " 2 = Neodark
 
 
+" ----------------------------------------------------------------------
+" | Plugins - CtrlP
+" ----------------------------------------------------------------------
+
+" Enable at startup
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll|pyc)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
+let g:ctrlp_user_command = {
+  \   'types': {
+  \     1: ['.git', 'cd %s && git ls-files --cached --exclude-standard --others'],
+  \     2: ['.hg', 'hg --cwd %s locate -I .'],
+  \   },
+  \   'fallback': 'ag %s -l --nocolor -g "" --ignore .git --ignore node_modules --ignore tools'
+  \ }
 
 " ----------------------------------------------------------------------
 " | Plugins - Deoplete                                                |
