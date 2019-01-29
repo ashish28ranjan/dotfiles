@@ -27,6 +27,27 @@ install_package "Google Chrome" "google-chrome-stable"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+if ! package_is_installed "brave-browser"; then
+
+    local os_codename="$(lsb_release -sc)"
+
+    add_key "https://brave-browser-apt-release.s3.brave.com/brave-core.asc" \
+        || print_error "Brave browser (add key)"
+
+    source /etc/os-release &> /dev/null
+
+    add_to_source_list "[arch=amd64] https://brave-browser-apt-release.s3.brave.com/ $os_codename main" "brave-browser-release-$os_codename.list" \
+        || print_error "Brave browser (add to package resource list)"
+
+    update &> /dev/null \
+        || print_error "Brave browser (resync package index files)"
+
+fi
+
+install_package "Brave (stable)" "brave-browser brave-keyring"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 add_ppa "mozillateam/firefox-next" \
     || print_error "firefox (add ppa)"
 
