@@ -647,6 +647,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'jeetsukumaran/vim-filebeagle'
   Plug 'junegunn/rainbow_parentheses.vim'
   Plug 'KeitaNakamura/neodark.vim'
+  Plug 'mileszs/ack.vim'
   Plug 'mhinz/vim-startify'
   Plug 'NLKNguyen/papercolor-theme'
   Plug 'raimondi/delimitmate'
@@ -678,6 +679,14 @@ call ChangeTheme(1)            " Change theme
                                " 1 = PaperColor
                                " 2 = Neodark
 
+
+" ----------------------------------------------------------------------
+" | Plugins - ack
+" ----------------------------------------------------------------------
+
+" Use silversearcher (ag) as file searcher
+
+let g:ackprg = 'ag --vimgrep'
 
 " ----------------------------------------------------------------------
 " | Plugins - CtrlP
