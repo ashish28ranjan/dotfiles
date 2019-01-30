@@ -56,6 +56,7 @@ execute "sudo -H pip3 install --upgrade pip" \
 
 install_package "ShellCheck" "shellcheck"
 install_package "The Silver Searcher (ag)" "silversearcher-ag"
+install_package "Vim" "vim"
 install_package "xclip" "xclip"
 
 

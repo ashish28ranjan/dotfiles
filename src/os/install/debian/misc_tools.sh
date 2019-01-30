@@ -26,6 +26,7 @@ install_package "ffmpeg" "ffmpeg libav-tools x264 x265"
 install_package "htop" "htop"
 install_package "ShellCheck" "shellcheck"
 install_package "The Silver Searcher (ag)" "silversearcher-ag"
+install_package "Vim" "vim"
 install_package "xclip" "xclip"
 
 
