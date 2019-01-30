@@ -12,11 +12,14 @@ print_in_purple "\n   Build Essentials\n\n"
 install_package "apt-transport-https" "apt-transport-https"
 
 # Install tools for compiling/building software from source.
-install_package "Build Essential" "build-essential"
+install_package "Build Essential" "build-essential libbz2-dev \
+    libffi-dev liblzma-dev libncurses5-dev libncursesw5-dev \
+    libreadline-dev libsqlite3-dev libssl-dev llvm make \
+    python-openssl tk-dev wget xz-utils zlib1g-dev"
 
 # GnuPG archive keys of the Debian archive.
 install_package "GnuPG archive keys" "debian-archive-keyring"
 
 # Software which is not included by default
 # in Ubuntu due to legal or copyright reasons.
-#install_package "Ubuntu Restricted Extras" "ubuntu-restricted-extras"
+install_package "Ubuntu Restricted Extras" "ubuntu-restricted-extras"
