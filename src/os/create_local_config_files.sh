@@ -163,7 +163,7 @@ create_ssh_config_local() {
 #   IdentityFile ~/.ssh/id_dsa
 #   IdentityFile ~/.ssh/id_rsa
 #   PasswordAuthentication no
-#   UserKnownHostsFile ~/.ssh/known_hosts2
+#   UserKnownHostsFile ~/.ssh/known_hosts
 #   PermitLocalCommand yes
 #   LocalCommand \"uname -a\"
 #   RemoteCommand \"uname -a\"
