@@ -32,6 +32,7 @@ upgrade
 if $isDesktopEnabled; then
 
 	./browsers.sh
+    ./fonts.sh
 	./image_tools.sh
 	./misc.sh
 
