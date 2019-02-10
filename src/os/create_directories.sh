@@ -10,6 +10,7 @@ create_directories() {
     declare -a DIRECTORIES=(
         "$HOME/.config/nvim"
         "$HOME/.config/tmuxifier"
+        "$HOME/.local/share/fonts"
         "$HOME/bin"
         "$HOME/projects"
         "$HOME/tools"
