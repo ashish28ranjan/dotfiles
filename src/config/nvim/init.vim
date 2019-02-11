@@ -654,6 +654,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'raimondi/delimitmate'
   Plug 'rgarver/Kwbd.vim'
   Plug 'roman/golden-ratio'
+  Plug 'sheerun/vim-polyglot'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'szw/vim-maximizer'
   Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
