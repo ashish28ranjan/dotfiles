@@ -646,6 +646,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'farmergreg/vim-lastplace'
   Plug 'jeetsukumaran/vim-filebeagle'
   Plug 'junegunn/rainbow_parentheses.vim'
+  Plug 'justinmk/vim-sneak'
   Plug 'KeitaNakamura/neodark.vim'
   Plug 'mileszs/ack.vim'
   Plug 'mhinz/vim-startify'
