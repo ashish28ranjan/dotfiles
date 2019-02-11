@@ -501,6 +501,12 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+" [<SPC>a] Search the current word under cursor using ag
+
+nmap <leader>a :Ack! "\b<cword>\b" <CR>
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 " [<SPC>bd] Delete buffer without closing window mapping.
 
 nmap <leader>bd :Kwbd<CR>
