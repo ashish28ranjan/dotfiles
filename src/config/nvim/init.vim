@@ -625,6 +625,12 @@ nmap <leader>wz :MaximizerToggle!<CR>
 
 nmap <leader>W :w !sudo tee %<CR>
 
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+" [<SPC>x] Close QuickFix window
+
+nmap <leader>x :cclose<CR>
+
 
 
 " ----------------------------------------------------------------------
