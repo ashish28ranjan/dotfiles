@@ -19,7 +19,7 @@ if [ ! -f "$localFontPath/UbuntuMono-R.ttf" ]; then
                 'https://assets.ubuntu.com/v1/fad7939b-ubuntu-font-family-0.83.zip' &> /dev/null \
             && unzip -qq -o -d $downloadPath \
                 $downloadPath/ubuntu-font-family-0.83.zip \
-            && cp -f --preserve $downloadPath/ubuntu-font-family-0.83/*.ttf \
+            && cp -f $downloadPath/ubuntu-font-family-0.83/*.ttf \
                 $localFontPath" \
         "Ubuntu"
 
