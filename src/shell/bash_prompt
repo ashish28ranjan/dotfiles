@@ -198,11 +198,11 @@ set_prompts() {
     # Fetch git repository details
     case $1 in
         "")
-            PS1+="\$(get_git_repository_details \"$grey⚡ $cyan\")"
+            PS1+="\$(get_git_repository_details \"$grey› $cyan\")"
             ;;
         "mini" | "micro" | "nano")
             if [ "$2" = "git" ]; then
-                PS1+="\$(get_git_repository_details \"$grey⚡ $cyan\")"
+                PS1+="\$(get_git_repository_details \"$grey› $cyan\")"
             fi
             ;;
         "pico")
