@@ -143,8 +143,8 @@ function! ChangeTheme(themeId)
         " Set comment color to grey
         highlight Comment
             \ term=NONE
-            \ cterm=NONE  ctermbg=NONE   ctermfg=246
-            \ gui=NONE    guibg=NONE     guifg=#949494
+            \ cterm=italic  ctermbg=NONE   ctermfg=246
+            \ gui=italic    guibg=NONE     guifg=#949494
 
         " Highlight current word (vim_current_word)
         highlight CurrentWord
@@ -155,13 +155,13 @@ function! ChangeTheme(themeId)
          " Highlight twin word (vim_current_word)
         highlight CurrentWordTwins
             \ term=NONE
-            \ cterm=underline  ctermbg=252    ctermfg=NONE
-            \ gui=underline    guibg=#c6c6c6  guifg=NONE
+            \ cterm=underline  ctermbg=253    ctermfg=NONE
+            \ gui=underline    guibg=#dadada  guifg=NONE
 
         highlight CursorLine
             \ term=NONE
-            \ cterm=NONE  ctermbg=251    ctermfg=NONE
-            \ gui=NONE    guibg=#c6c6c6  guifg=NONE
+            \ cterm=NONE  ctermbg=252    ctermfg=NONE
+            \ gui=NONE    guibg=#d0d0d0  guifg=NONE
 
         highlight CursorLineNr
             \ term=NONE
@@ -225,8 +225,8 @@ function! ChangeTheme(themeId)
         " Set comment color to grey
         highlight Comment
             \ term=NONE
-            \ cterm=NONE  ctermbg=NONE   ctermfg=242
-            \ gui=NONE    guibg=NONE     guifg=#585858
+            \ cterm=italic  ctermbg=NONE   ctermfg=242
+            \ gui=italic    guibg=NONE     guifg=#585858
 
         " Highlight current word (vim_current_word)
         highlight CurrentWord
