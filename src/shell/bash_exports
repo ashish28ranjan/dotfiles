@@ -11,6 +11,24 @@ export EDITOR="nvim"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Set default fzf command
+
+export FZF_DEFAULT_COMMAND='fd --type f --color=never'
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Change to a fuzzy found sub-directory
+
+export FZF_ALT_C_COMMAND='fd --type d . --color=never'
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Append fuzzy found files to the end of the current shell command
+
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Ignore commands that are duplicates
 
 export HISTCONTROL=ignoredups
