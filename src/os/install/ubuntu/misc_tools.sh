@@ -77,6 +77,16 @@ execute "sudo -H pip3 install --upgrade pip" \
         "Pip3 upgrade"
 
 
+if ! package_is_installed "rg"; then
+
+    downloadUrl="https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb"
+
+    curl -fLo "$tmpDir/rg.deb" "$downloadUrl" &> /dev/null
+
+fi
+install_deb_package "ripgrep (rg)" "rg" "$tmpDir/rg.deb"
+
+
 install_package "ShellCheck" "shellcheck"
 install_package "The Silver Searcher (ag)" "silversearcher-ag"
 install_package "Vim" "vim"

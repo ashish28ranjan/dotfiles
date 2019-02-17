@@ -48,6 +48,18 @@ install_deb_package "fd" "fd" "$tmpDir/fd.deb"
 install_package "ffmpeg" "ffmpeg libav-tools x264 x265"
 install_package "htop" "htop"
 install_package "ShellCheck" "shellcheck"
+
+
+if ! package_is_installed "rg"; then
+
+    downloadUrl="https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb"
+
+    curl -fLo "$tmpDir/rg.deb" "$downloadUrl" &> /dev/null
+
+fi
+install_deb_package "ripgrep (rg)" "rg" "$tmpDir/rg.deb"
+
+
 install_package "The Silver Searcher (ag)" "silversearcher-ag"
 install_package "Vim" "vim"
 install_package "xclip" "xclip"

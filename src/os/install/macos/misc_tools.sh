@@ -32,6 +32,7 @@ brew_install "Python3" "python3"
 execute "sudo -H pip3 install --upgrade pip" \
         "Pip3 upgrade"
 
+brew_install "ripgrep (rg)" "ripgrep"
 
 brew_install "ShellCheck" "shellcheck"
 brew_install "The Silver Searcher (ag)" "the_silver_searcher"
