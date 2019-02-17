@@ -44,6 +44,20 @@ install_package() {
 
 }
 
+install_deb_package() {
+
+    declare -r DEB_PACKAGE_PATH="$3"
+    declare -r PACKAGE="$2"
+    declare -r PACKAGE_READABLE_NAME="$1"
+
+    if ! package_is_installed "$PACKAGE"; then
+        execute "sudo dpkg -i $DEB_PACKAGE_PATH" "$PACKAGE_READABLE_NAME"
+    else
+        print_success "$PACKAGE_READABLE_NAME"
+    fi
+
+}
+
 package_is_installed() {
     dpkg -s "$1" &> /dev/null
 }
