@@ -22,6 +22,20 @@ execute "chmod +x '$HOME/bin/diff-so-fancy'" \
         "diff-so-fancy"
 
 
+if ! package_is_installed "fd"; then
+
+    tmpDir="$(mktemp -d /tmp/XXXXX)"
+    downloadUrl="https://github.com/sharkdp/fd/releases/download/v7.3.0/fd_7.3.0_amd64.deb"
+
+    execute "curl -fLo $tmpDir/fd.deb $downloadUrl \
+            && sudo dpkg -i $tmpDir/fd.deb" \
+        "fd"
+
+else
+    print_success "fd"
+fi
+
+
 install_package "ffmpeg" "ffmpeg libav-tools x264 x265"
 install_package "htop" "htop"
 install_package "ShellCheck" "shellcheck"

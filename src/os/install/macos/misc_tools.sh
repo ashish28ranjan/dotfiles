@@ -19,7 +19,10 @@ execute "chmod +x '$HOME/bin/diff-so-fancy'" \
         "diff-so-fancy"
 
 
+brew_install "fd" "fd"
+
 brew_install "htop" "htop"
+
 brew_install "iTerm2" "iterm2" "caskroom/cask" "cask"
 
 
