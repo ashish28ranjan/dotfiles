@@ -11,6 +11,7 @@ print_in_purple "\n   Miscellaneous Tools\n\n"
 
 brew_install "aria2" "aria2"
 
+brew_install "bat" "bat"
 
 if [ ! -f "$HOME/bin/diff-so-fancy" ]; then
     wget -qO "$HOME/bin/diff-so-fancy" "https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy" &> /dev/null

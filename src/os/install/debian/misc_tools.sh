@@ -15,6 +15,16 @@ tmpDir="$(mktemp -d /tmp/XXXXX)"
 install_package "aria2" "aria2"
 
 
+if ! package_is_installed "bat"; then
+
+    downloadUrl="https://github.com/sharkdp/bat/releases/download/v0.10.0/bat_0.10.0_amd64.deb"
+
+    curl -fLo "$tmpDir/bat.deb" "$downloadUrl" &> /dev/null
+
+fi
+install_deb_package "bat" "bat" "$tmpDir/bat.deb"
+
+
 install_package "cURL" "curl"
 
 
