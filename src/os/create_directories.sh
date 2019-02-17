@@ -8,6 +8,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 create_directories() {
 
     declare -a DIRECTORIES=(
+        "$HOME/.config/fzf/shell"
         "$HOME/.config/nvim"
         "$HOME/.config/tmuxifier"
         "$HOME/.local/share/fonts"

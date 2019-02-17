@@ -20,6 +20,7 @@ upgrade
 ./../nvm.sh
 
 ./compression_tools.sh
+./../fzf.sh
 ./git.sh
 ./../gpg.sh
 ./misc_tools.sh

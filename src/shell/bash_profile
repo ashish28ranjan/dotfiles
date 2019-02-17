@@ -53,7 +53,7 @@ unset -f source_bash_files
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Source fzf
-[ -f $HOME/.fzf.bash ] && source $HOME/.fzf.bash
+[ -f $HOME/.config/fzf/shell/fzf.bash ] && source $HOME/.config/fzf/shell/fzf.bash
 
 # Source nix
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
