@@ -673,7 +673,6 @@ endif
 call plug#begin('~/.vim/plugged')
 
   Plug 'airblade/vim-gitgutter'
-  Plug 'blueyed/vim-diminactive'
   Plug 'dominikduda/vim_current_word'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'farmergreg/vim-lastplace'
