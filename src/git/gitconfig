@@ -14,7 +14,7 @@
     f    = fetch
     git  = !exec git                        # Allow `$ git git git...`
     s    = status
-    rs   = reset
+    r    = reset
     rmt  = remote
 
     # Kaleidoscope commands
