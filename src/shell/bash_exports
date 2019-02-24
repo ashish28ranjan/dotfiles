@@ -29,6 +29,16 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Append fuzzy found files to the end of the current shell command
+
+export FZF_DEFAULT_OPTS='
+    --bind ctrl-f:page-down,ctrl-b:page-up
+    --color fg+:253,bg+:237,hl+:202,hl:202
+    --color info:136,prompt:136,spinner:136,pointer:7,marker:204
+    --height 40% --multi --reverse'
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Ignore commands that are duplicates
 
 export HISTCONTROL=ignoredups
