@@ -32,6 +32,14 @@ asciiart() {
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Check if the given command exists.
+
+cmd_exists() {
+    command -v "$1" &> /dev/null
+}
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Create data URI from a file.
 
 datauri() {
