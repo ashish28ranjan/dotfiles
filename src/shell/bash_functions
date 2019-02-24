@@ -76,6 +76,117 @@ delete-files() {
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Fuzzy find files, then once selected edit it in your preferred editor.
+
+fzf_find_edit() {
+
+    local files=$(
+        fzf-tmux --multi
+    )
+
+    if [[ -n $files ]]; then
+        ${EDITOR:-vim} $files
+    fi
+
+}
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Fuzzy git add.
+
+fzf_git_add() {
+
+    local files=$(
+        git ls-files \
+            --deleted \
+            --modified \
+            --others \
+            --killed \
+            --directory \
+            --no-empty-directory |
+            sort --unique |
+            fzf-tmux --ansi
+    )
+
+    if [[ -n $files ]]; then
+        git add --verbose $files
+    fi
+
+}
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Fuzzy search in git logs.
+
+fzf_git_log() {
+
+    local commits=$(
+        git l --color=always "$@" |
+            fzf-tmux --ansi --no-sort --height 100%
+    )
+
+    if [[ -n $commits ]]; then
+        local hashes=$(printf "$commits" | cut -d' ' -f2 | tr '\n' ' ')
+        git show $hashes
+    fi
+
+}
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Fuzzy git reset.
+
+fzf_git_reset() {
+
+    local files=$(
+        git diff --name-only --cached |
+            sort --unique |
+            fzf-tmux --ansi
+    )
+
+    if [[ -n $files ]]; then
+        git reset $files
+    fi
+
+}
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Fuzzy find a file, with colorful preview, that contains the supplied
+# term, then once selected edit it in your preferred editor.
+# Note, if your EDITOR is Vim or Neovim then you will be automatically
+# scrolled to the selected line.
+
+fzf_grep_edit(){
+
+    if [[ $# == 0 ]]; then
+        echo 'Error: search term was not provided.'
+        return
+    fi
+
+    local matches
+    if cmd_exists "rg"; then
+        matches=$(
+            rg --color=never --line-number "$1" |
+                fzf-tmux --delimiter :
+        )
+    else
+        matches=$(
+            ag --nobreak --noheading "$1" |
+                fzf-tmux --delimiter :
+        )
+    fi
+
+    local files=$(echo "$matches" | cut -d':' -f1)
+
+    if [[ -n $files ]]; then
+        ${EDITOR:-vim} $files +$(echo "$matches" | cut -d':' -f2)
+    fi
+
+}
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Get gzip information (gzipped file size + reduction size).
 
 gz() {
