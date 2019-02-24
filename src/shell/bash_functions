@@ -81,7 +81,7 @@ delete-files() {
 fzf_find_edit() {
 
     local files=$(
-        fzf-tmux --multi
+        fzf --multi
     )
 
     if [[ -n $files ]]; then
@@ -105,7 +105,7 @@ fzf_git_add() {
             --directory \
             --no-empty-directory |
             sort --unique |
-            fzf-tmux --ansi
+            fzf --ansi
     )
 
     if [[ -n $files ]]; then
@@ -122,7 +122,7 @@ fzf_git_log() {
 
     local commits=$(
         git l --color=always "$@" |
-            fzf-tmux --ansi --no-sort --height 100%
+            fzf --ansi --no-sort --height 100%
     )
 
     if [[ -n $commits ]]; then
@@ -141,7 +141,7 @@ fzf_git_reset() {
     local files=$(
         git diff --name-only --cached |
             sort --unique |
-            fzf-tmux --ansi
+            fzf --ansi
     )
 
     if [[ -n $files ]]; then
@@ -168,12 +168,12 @@ fzf_grep_edit(){
     if cmd_exists "rg"; then
         matches=$(
             rg --color=never --line-number "$1" |
-                fzf-tmux --delimiter :
+                fzf --delimiter :
         )
     else
         matches=$(
             ag --nobreak --noheading "$1" |
-                fzf-tmux --delimiter :
+                fzf --delimiter :
         )
     fi
 
