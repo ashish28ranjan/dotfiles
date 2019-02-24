@@ -13,13 +13,21 @@ export EDITOR="nvim"
 
 # Set default fzf command
 
-export FZF_DEFAULT_COMMAND='fd --type f --color=never'
+if cmd_exists "fd"; then
+    export FZF_DEFAULT_COMMAND='fd --type f --color=never'
+else
+    export FZF_DEFAULT_COMMAND='find * -type f'
+fi
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Change to a fuzzy found sub-directory
 
-export FZF_ALT_C_COMMAND='fd --type d . --color=never'
+if cmd_exists "fd"; then
+    export FZF_ALT_C_COMMAND='fd --type d . --color=never'
+else
+    export FZF_ALT_C_COMMAND='find * -type d'
+fi
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
