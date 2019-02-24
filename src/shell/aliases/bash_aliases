@@ -33,6 +33,17 @@ alias ag="ag --color-line-number '0;91' --color-match '30;43' --color-path '1;36
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# fzf
+
+alias ff="fzf_find_edit"
+alias fg="fzf_grep_edit"
+
+alias ga="fzf_git_add"
+alias gl="fzf_git_log"
+alias gr="fzf_git_reset"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # GPG
 
 alias gpg="gpg2 --options $HOME/.gnupg/gpg.conf --options $HOME/.gnupg/gpg.conf.local"
