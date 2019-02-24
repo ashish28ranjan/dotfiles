@@ -501,6 +501,18 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+" [<C-m>] Open fzf buffer finder
+
+nmap <C-m> :Buffers <CR>
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+" [<C-p>] Open fzf file finder
+
+nmap <C-p> :Files <CR>
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 " [<SPC>a] Search the current word under cursor using ag
 
 nmap <leader>a :Ack! "\b<cword>\b" <CR>
@@ -543,9 +555,19 @@ nmap <leader>ev :vsp $MYVIMRC<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-" [<SPC>fd] Open CtrlP in file find mode.
+" [<SPC>fd] Open GFiles in file find mode.
 
-nmap <leader>fd :CtrlP<CR>
+nmap <leader>fd :GFiles <CR>
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+" [<SPC>fg] Open GFiles in file grep mode.
+
+if executable('rg')
+    nmap <leader>fg :Rg <CR>
+else
+    nmap <leader>fg :Ag <CR>
+endif
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -652,11 +674,12 @@ call plug#begin('~/.vim/plugged')
 
   Plug 'airblade/vim-gitgutter'
   Plug 'blueyed/vim-diminactive'
-  Plug 'ctrlpvim/ctrlp.vim'
   Plug 'dominikduda/vim_current_word'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'farmergreg/vim-lastplace'
   Plug 'jeetsukumaran/vim-filebeagle'
+  Plug 'junegunn/fzf'
+  Plug 'junegunn/fzf.vim'
   Plug 'junegunn/rainbow_parentheses.vim'
   Plug 'justinmk/vim-sneak'
   Plug 'KeitaNakamura/neodark.vim'
