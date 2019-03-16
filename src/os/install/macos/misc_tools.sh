@@ -29,6 +29,13 @@ brew_install "htop" "htop"
 brew_install "iTerm2" "iterm2" "caskroom/cask" "cask"
 
 
+if [ ! -f "$HOME/bin/prettyping" ]; then
+    wget -qO "$HOME/bin/prettyping" "https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping" &> /dev/null
+fi
+execute "chmod +x '$HOME/bin/prettyping'" \
+        "prettyping"
+
+
 brew_install "Python3" "python3"
 
 execute "sudo -H pip3 install --upgrade pip" \
