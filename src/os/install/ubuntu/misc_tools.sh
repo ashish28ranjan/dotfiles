@@ -57,6 +57,7 @@ fi
 install_package "ffmpeg" "ffmpeg libav-tools x264 x265"
 
 
+install_package "glances" "glances"
 install_package "htop" "htop"
 
 
