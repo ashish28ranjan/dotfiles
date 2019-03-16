@@ -19,7 +19,7 @@ init_backup() {
         tail -1
     )
 
-    CURRENT_VERSION=$[$LAST_VERSION + 1]
+    CURRENT_VERSION=$(($LAST_VERSION + 1))
 
     BACKUP_DIR="$HOME/dotfiles-backup/v$CURRENT_VERSION"
 
@@ -36,7 +36,7 @@ finish_backup() {
         sed "1!G;h;$!d" |\
         #    └─ reverse the output, last to first
         while read dir; do \
-            (rmdir $dir > /dev/null 2>&1); \
+            (rmdir "$dir" > /dev/null 2>&1); \
         done
 
     rmdir "$BACKUP_DIR" > /dev/null 2>&1

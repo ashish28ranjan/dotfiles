@@ -1,10 +1,10 @@
 #!/bin/bash
 
-if [ -f autocomplete/$OS/bash_autocomplete ]; then
+if [ -f "autocomplete/$OS/bash_autocomplete" ]; then
    . "autocomplete/$OS/bash_autocomplete"
 fi
 
-if [ -f ../git/git_completion.sh ]; then
+if [ -f "../git/git_completion.sh" ]; then
    . "../git/git_completion.sh"
    __git_complete g __git_main
 fi

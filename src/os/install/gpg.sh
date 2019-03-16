@@ -15,7 +15,7 @@ main() {
     mkdir -p "$HOME/.gnupg"
 
     # Own .gnupg folder
-    chown -R $(whoami) "$HOME/.gnupg"
+    chown -R "$(whoami)" "$HOME/.gnupg"
 
     # Make all files inside .gnupg rw-------
     find "$HOME/.gnupg" -maxdepth 2 -type f -exec chmod 600 {} ';'

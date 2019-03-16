@@ -173,14 +173,14 @@ create_ssh_config_local() {
 
         printf "%s\n" "$configData"\
             >> "$FILE_PATH" \
-            && chmod 600 $FILE_PATH \
+            && chmod 600 "$FILE_PATH" \
             && print_result $? "$FILE_PATH"
 
     elif [ ! -e "$FILE_PATH_EXAMPLE" ] || [ -z "$FILE_PATH_EXAMPLE" ]; then
 
         printf "%s\n" "$configData"\
             >> "$FILE_PATH_EXAMPLE" \
-            && chmod 600 $FILE_PATH_EXAMPLE \
+            && chmod 600 "$FILE_PATH_EXAMPLE" \
             && print_result $? "$FILE_PATH_EXAMPLE"
 
     fi

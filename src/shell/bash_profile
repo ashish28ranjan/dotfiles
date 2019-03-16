@@ -53,11 +53,12 @@ unset -f source_bash_files
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Source fzf
-[ -f $HOME/.config/fzf/shell/fzf.bash ] && source $HOME/.config/fzf/shell/fzf.bash
+[ -f "$HOME/.config/fzf/shell/fzf.bash" ] \
+    && source "$HOME/.config/fzf/shell/fzf.bash"
 
 # Source nix
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
-  . $HOME/.nix-profile/etc/profile.d/nix.sh;
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+  . "$HOME/.nix-profile/etc/profile.d/nix.sh";
 fi
 
 # Initialize pyenv & pyenv-virtualenv

@@ -35,12 +35,6 @@ create_symlinks() {
     local i=""
     local sourceFile=""
     local targetFile=""
-    local skipQuestions=false
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    skip_questions "$@" \
-        && skipQuestions=true
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -49,7 +43,7 @@ create_symlinks() {
         sourceFile="$(cd .. && pwd)/$i"
         targetFile="$HOME/.$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
 
-        create_symlink "$sourceFile" "$targetFile"
+        create_symlink "$sourceFile" "$targetFile" "$@"
 
     done
 
@@ -77,12 +71,6 @@ create_full_path_symlinks() {
     local i=""
     local sourceFile=""
     local targetFile=""
-    local skipQuestions=false
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    skip_questions "$@" \
-        && skipQuestions=true
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -94,7 +82,7 @@ create_full_path_symlinks() {
         # Create the full folder structure
         mkdir -p "$(dirname $targetFile)"
 
-        create_symlink "$sourceFile" "$targetFile"
+        create_symlink "$sourceFile" "$targetFile" "$@"
 
     done
 

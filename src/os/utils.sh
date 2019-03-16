@@ -45,7 +45,16 @@ create_symlink() {
     local -r sourceFile="$1"
     local -r targetFile="$2"
 
-    if [ ! -e "$targetFile" ] || $skipQuestions; then
+    local skipQuestions=false
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    skip_questions "$3" \
+        && skipQuestions=true
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    if [ ! -e "$targetFile" ] || "$skipQuestions"; then
 
         execute \
             "ln -fs $sourceFile $targetFile" \
@@ -55,7 +64,7 @@ create_symlink() {
         print_success "$targetFile → $sourceFile"
     else
 
-        if ! $skipQuestions; then
+        if ! "$skipQuestions"; then
 
             ask_for_confirmation "'$targetFile' already exists, do you want to overwrite it?"
             if answer_is_yes; then
@@ -432,7 +441,7 @@ show_spinner() {
 }
 
 user_is_root () {
-    return $(id -u)
+    return "$(id -u)"
 }
 # Usage:
 # if user_is_root; then
@@ -447,7 +456,7 @@ user_has_sudo() {
     prompt=$(sudo -nv 2>&1)
     if [ $? -eq 0 ]; then
         echo "has_sudo__pass_set"
-    elif echo $prompt | grep -q '^sudo:'; then
+    elif echo "$prompt" | grep -q '^sudo:'; then
         echo "has_sudo__needs_pass"
     else
         echo "no_sudo"

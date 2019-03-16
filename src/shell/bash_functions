@@ -6,7 +6,6 @@
 
 asciiart() {
 
-    local asciiFile=""
     local asciiFilePath=""
 
     local source="${BASH_SOURCE[0]}"
@@ -314,7 +313,7 @@ ppi() {
     declare query="${1:-*.jpg}"
     declare geometry="${2:-50%}"
 
-    for i in "$query"; do
+    for i in $query; do
         imgName="${i%.*}.png"
         convert "$i" \
             -colorspace RGB \
@@ -340,7 +339,7 @@ ppi() {
 # Set PS1 prompt
 
 ps1() {
-    set_prompts $@
+    set_prompts "$@"
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
