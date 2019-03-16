@@ -73,6 +73,7 @@ install_deb_package "ripgrep (rg)" "rg" "$tmpDir/rg.deb"
 
 install_package "ShellCheck" "shellcheck"
 install_package "The Silver Searcher (ag)" "silversearcher-ag"
+install_package "tree" "tree"
 install_package "Vim" "vim"
 install_package "xclip" "xclip"
 

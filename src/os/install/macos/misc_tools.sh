@@ -49,6 +49,7 @@ brew_install "ripgrep (rg)" "ripgrep"
 
 brew_install "ShellCheck" "shellcheck"
 brew_install "The Silver Searcher (ag)" "the_silver_searcher"
+brew_install "tree" "tree"
 
 
 if [ -d "$HOME/.nvm" ]; then
