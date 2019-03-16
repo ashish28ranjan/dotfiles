@@ -47,7 +47,10 @@ install_deb_package "fd" "fd" "$tmpDir/fd.deb"
 
 install_package "ffmpeg" "ffmpeg libav-tools x264 x265"
 install_package "htop" "htop"
-install_package "ShellCheck" "shellcheck"
+
+
+execute "pip install --user pipenv" \
+        "Pipenv"
 
 
 if ! package_is_installed "rg"; then
@@ -60,6 +63,7 @@ fi
 install_deb_package "ripgrep (rg)" "rg" "$tmpDir/rg.deb"
 
 
+install_package "ShellCheck" "shellcheck"
 install_package "The Silver Searcher (ag)" "silversearcher-ag"
 install_package "Vim" "vim"
 install_package "xclip" "xclip"
