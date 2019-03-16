@@ -32,6 +32,10 @@ brew_install "Python3" "python3"
 execute "sudo -H pip3 install --upgrade pip" \
         "Pip3 upgrade"
 
+execute "pip3 install --user pipenv" \
+        "Pipenv"
+
+
 brew_install "ripgrep (rg)" "ripgrep"
 
 brew_install "ShellCheck" "shellcheck"
