@@ -76,6 +76,9 @@ install_package "Pip3" "python3-pip"
 execute "sudo -H pip3 install --upgrade pip" \
         "Pip3 upgrade"
 
+execute "pip3 install --user pipenv" \
+        "Pipenv"
+
 
 if ! package_is_installed "rg"; then
 
