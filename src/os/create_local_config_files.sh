@@ -136,7 +136,6 @@ create_gpg_conf_local() {
 create_ssh_config_local() {
 
     declare -r FILE_PATH="$HOME/.ssh/config"
-    declare -r FILE_PATH_EXAMPLE="$HOME/.ssh/config.example"
 
     # Create the full folder structure
     mkdir -p "$(dirname $FILE_PATH)"
@@ -144,16 +143,29 @@ create_ssh_config_local() {
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     configData="Host *
-  Port 22
+  ChallengeResponseAuthentication no
   CheckHostIP yes
-  HashKnownHosts yes
-  StrictHostKeyChecking ask
-  Ciphers chacha20-poly1305@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr,3des-cbc,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-cbc,aes192-cbc,aes128-cbc
   Compression yes
   ConnectionAttempts 1
+  HashKnownHosts no
+  PasswordAuthentication no
+  Port 22
   PubkeyAuthentication yes
   RekeyLimit 100M 3600
+  StrictHostKeyChecking ask
   TCPKeepAlive yes
+  UseRoaming no
+  Ciphers           chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
+  HostKeyAlgorithms ssh-ed25519-cert-v01@openssh.com,ssh-ed25519,ssh-rsa-cert-v01@openssh.com,ssh-rsa
+  KexAlgorithms     curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
+  MACs              hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com
+
+
+Host github.com
+  # Github needs diffie-hellman-group-exchange-sha1 some of the time but not always.
+  Hostname ssh.github.com
+  KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1
+  Port 443
 
 
 # Host example
@@ -175,13 +187,6 @@ create_ssh_config_local() {
             >> "$FILE_PATH" \
             && chmod 600 "$FILE_PATH" \
             && print_result $? "$FILE_PATH"
-
-    elif [ ! -e "$FILE_PATH_EXAMPLE" ] || [ -z "$FILE_PATH_EXAMPLE" ]; then
-
-        printf "%s\n" "$configData"\
-            >> "$FILE_PATH_EXAMPLE" \
-            && chmod 600 "$FILE_PATH_EXAMPLE" \
-            && print_result $? "$FILE_PATH_EXAMPLE"
 
     fi
 
