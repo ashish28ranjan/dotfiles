@@ -573,6 +573,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+  Plug 'christoomey/vim-tmux-navigator'
   Plug 'rgarver/Kwbd.vim'
   Plug 'szw/vim-maximizer'
   Plug 'tpope/vim-commentary'
