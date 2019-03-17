@@ -91,3 +91,9 @@ shopt -s no_empty_cmd_completion
 # filename expansion
 
 shopt -s nocaseglob
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Set the appropriate umask.
+
+umask 002
