@@ -11,6 +11,12 @@ export EDITOR="nvim"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Set fzf preview
+
+export FZF_PREVIEW=1
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Set default fzf command
 
 if cmd_exists "fd"; then
@@ -44,6 +50,15 @@ export FZF_DEFAULT_OPTS='
     --color fg+:253,bg+:237,hl+:202,hl:202
     --color info:136,prompt:136,spinner:136,pointer:7,marker:204
     --height 40% --multi --reverse'
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Change to a fuzzy found sub-directory
+
+if [ "$FZF_PREVIEW" -eq 1 ]; then
+    export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}'"
+    export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -100'"
+fi
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
