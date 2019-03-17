@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Remove all previous environment defined aliases.
+unalias -a
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -8,19 +13,24 @@ alias cd..="cd .."
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 alias :q="exit"
+alias aliases="alias | cut -c7- | bat -l ini --style=plain"
 alias c="clear"
 alias ch="history -c && > ~/.bash_history"
 alias dfh="df -h $HOME"
 alias g="git"
+alias gtop="glances"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias l="less"
+alias ls="ls --color=auto"
 alias ll="ls -laF"
 alias m="man"
 alias map="xargs -n1"
 alias n="npm"
+alias p='python'
 alias path='printf "%b\n" "${PATH//:/\\n}"'
 alias pe='pyenv'
-alias p='python'
+alias pping='prettyping --nolegend'
+alias rg='rg --smart-case'
 alias rmf="rm -rf"
 alias v="nvim"
 alias y="yarn"
@@ -40,7 +50,9 @@ alias ffg="fzf_grep_edit"
 
 alias ga="fzf_git_add"
 alias gl="fzf_git_log"
+alias gpx="fzf_git_log_pickaxe"
 alias gr="fzf_git_reset"
+alias grf="fzf_git_reflog"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
