@@ -27,9 +27,30 @@ set bell-style visible
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Enable completion coloring.
+
+set colored-completion-prefix on
+
+set colored-stats on
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Use case-insensitive TAB autocompletion.
 
 set completion-ignore-case on
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Treat hypen and underscores as equivalent.
+
+set completion-map-case on
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Automatically add slash to the end of symlinked directories
+# when completing.
+
+set mark-symlinked-directories on
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
