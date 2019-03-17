@@ -32,14 +32,16 @@ init_backup() {
 
 finish_backup() {
 
-    find "$BACKUP_DIR" -type d -empty |\
-        sed "1!G;h;$!d" |\
-        #    └─ reverse the output, last to first
+    find "$BACKUP_DIR" -type d -printf "%d %p\n" |\
+    #                           └─ Recursively list directories
+    #                               along with depth
+        sort -nr |\
+    #   └─ Sort by descending order of depth
+        perl -pe 's/^\d+\s//;' |\
+    #   └─ Filter out only the directory paths
         while read dir; do \
             (rmdir "$dir" > /dev/null 2>&1); \
         done
-
-    rmdir "$BACKUP_DIR" > /dev/null 2>&1
 
     if [ -d "$BACKUP_DIR" ]; then
         print_success "Backup created successfully"
