@@ -10,7 +10,23 @@ print_in_purple "\n   Fonts\n\n"
 
 
 localFontPath="$HOME/.local/share/fonts"
-downloadPath="$HOME/tools"
+downloadPath="$(mktemp -d)"
+
+mkdir -p "$localFontPath"
+
+if [ ! -f "$localFontPath/iosevka-term-regular.ttf" ]; then
+
+    execute "wget -qO $downloadPath/02-iosevka-term-2.2.0.zip \
+                'https://github.com/be5invis/Iosevka/releases/download/v2.2.0/02-iosevka-term-2.2.0.zip' &> /dev/null \
+            && unzip -qq -o -d $downloadPath \
+                $downloadPath/02-iosevka-term-2.2.0.zip \
+            && cp -f $downloadPath/ttf/*.ttf \
+                $localFontPath" \
+        "Iosevka"
+
+else
+    print_success "Iosevka"
+fi
 
 
 if [ ! -f "$localFontPath/UbuntuMono-R.ttf" ]; then
@@ -24,9 +40,7 @@ if [ ! -f "$localFontPath/UbuntuMono-R.ttf" ]; then
         "Ubuntu"
 
 else
-
     print_success "Ubuntu"
-
 fi
 
 
