@@ -5,7 +5,7 @@
 
     # Basic
     a    = add
-    b    = branch
+    br   = branch
     c    = commit
     co   = checkout
     cp   = cherry-pick
@@ -14,8 +14,10 @@
     f    = fetch
     git  = !exec git                        # Allow `$ git git git...`
     s    = status
+    sh   = show
+    st   = stash
     r    = reset
-    rmt  = remote
+    rt   = remote
 
     # Kaleidoscope commands
     dkal = difftool -y -t Kaleidoscope
@@ -42,6 +44,33 @@
 
     # Web
     web  = instaweb --httpd=webrick         # Start web-based visualizer.
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    # Find commits by source code.
+    # List branches sorted from most to least recent
+    # (by last commit date) whilst also displaying more details
+    # per each branch (last commit date and author).
+
+    b = "!f() { \
+        widest_branch_name=$(git branch --format='%(refname:short)' \"$@\" | awk '{ print length() }' | sort -r -n | head -1); \
+        width=$(($widest_branch_name + 5)); \
+        \
+        format=\"%(HEAD) \
+%(align:$width)%(color:green bold)%(refname:short)%(end) \
+%(if)%(upstream)%(then) %(color:red)(%(upstream:short)%(color:reset) \
+%(if)%(upstream:track)%(then): %(upstream:track,nobracket) \
+%(end)%(color:red))\
+%(end)\
+%(color:reset)- \
+%(color:magenta)%(objectname:short) \
+%(color:yellow)%(committerdate:relative) \
+%(color:red)%(contents:subject) \
+%(color:cyan)(%(authorname))\
+%(color:reset)\"; \
+        \
+		git branch -vv --sort=-committerdate --format=\"$format\" \"$@\"; \
+    }; f"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -124,6 +153,13 @@
         git reset --soft \"HEAD~$n\"; \
     }; f"
 
+[advice]
+
+    waitingForEditor = false
+
+[color]
+
+    ui = auto
 
 [color "branch"]
 
@@ -209,6 +245,7 @@
 
 [mergetool]
 
+    keepBackup = false
     prompt = false
     tool = vimdiff
 
