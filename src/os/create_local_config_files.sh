@@ -21,6 +21,15 @@ create_bash_local() {
 
 create_gitconfig_local() {
 
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    skipQuestions=false
+
+    skip_questions "$1" \
+        && skipQuestions=true
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
     declare -r FILE_PATH="$HOME/.gitconfig.local"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -34,12 +43,16 @@ create_gitconfig_local() {
 
         print_in_yellow "   (Press ENTER to continue with [default], or type a new value and then press ENTER)\n"
 
-        ask "Name:  [$defaultName] "
-        tmpName="$(get_answer)"
+        tmpName=""
+        tmpEmail=""
 
-        ask "Email: [$defaultEmail] "
-        tmpEmail="$(get_answer)"
+        if ! "$skipQuestions"; then
+            ask "Name:  [$defaultName] "
+            tmpName="$(get_answer)"
 
+            ask "Email: [$defaultEmail] "
+            tmpEmail="$(get_answer)"
+        fi
 
         printf "%s\n" \
 "[user]
@@ -198,12 +211,14 @@ main() {
 
     print_in_purple "\n • Create local config files\n\n"
 
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
     create_bash_local
-    create_gitconfig_local
+    create_gitconfig_local "$@"
     create_gpg_conf_local
     create_ssh_config_local
     create_vimrc_local
 
 }
 
-main
+main "$@"
