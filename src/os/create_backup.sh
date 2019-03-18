@@ -32,16 +32,8 @@ init_backup() {
 
 finish_backup() {
 
-    find "$BACKUP_DIR" -type d -printf "%d %p\n" |\
-    #                           └─ Recursively list directories
-    #                               along with depth
-        sort -nr |\
-    #   └─ Sort by descending order of depth
-        perl -pe 's/^\d+\s//;' |\
-    #   └─ Filter out only the directory paths
-        while read dir; do \
-            (rmdir "$dir" > /dev/null 2>&1); \
-        done
+    # https://unix.stackexchange.com/questions/8430/how-to-remove-all-empty-directories-in-a-subtree
+    find "$BACKUP_DIR" -type d -empty -delete
 
     if [ -d "$BACKUP_DIR" ]; then
         print_success "Backup created successfully"
