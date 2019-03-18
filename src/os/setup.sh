@@ -257,13 +257,17 @@ main() {
 
     isDesktopEnabled=true
 
-    printf "\n"
-    ask_for_confirmation "Is this machine a server?"
+    if ! $skipQuestions; then
 
-    if answer_is_yes; then
-        isDesktopEnabled=false
+        printf "\n"
+        ask_for_confirmation "Is this machine a server?"
+
+        if answer_is_yes; then
+            isDesktopEnabled=false
+        fi
+        printf "\n"
+
     fi
-    printf "\n"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
