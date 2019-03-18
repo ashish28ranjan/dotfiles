@@ -12,6 +12,8 @@ create_directories() {
         "$HOME/.config/nvim"
         "$HOME/.config/tmuxifier"
         "$HOME/.local/share/fonts"
+        "$HOME/.local/share/info"
+        "$HOME/.local/share/man"
         "$HOME/bin"
         "$HOME/projects"
         "$HOME/tools"
