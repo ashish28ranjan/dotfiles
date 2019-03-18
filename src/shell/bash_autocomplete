@@ -4,6 +4,10 @@ if [ -f "autocomplete/$OS/bash_autocomplete" ]; then
     . "autocomplete/$OS/bash_autocomplete"
 fi
 
+if [ -f "../config/exa/shell/completions.bash" ]; then
+    . "../config/exa/shell/completions.bash"
+fi
+
 if [ -f "../git/git-completion.sh" ]; then
     . "../git/git-completion.sh"
     __git_complete g __git_main

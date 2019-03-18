@@ -35,6 +35,15 @@ execute "chmod +x '$HOME/bin/diff-so-fancy'" \
         "diff-so-fancy"
 
 
+if [ ! -f "$HOME/bin/exa" ]; then
+    wget -qO "$tmpDir/exa.zip" "https://github.com/ogham/exa/releases/download/v0.8.0/exa-linux-x86_64-0.8.0.zip" &> /dev/null \
+        && unzip -qq -o -d "$tmpDir" "$tmpDir/exa.zip" \
+        && cp -f "$tmpDir/exa-linux-x86_64" "$HOME/bin/exa"
+fi
+execute "chmod +x '$HOME/bin/exa'" \
+        "exa"
+
+
 if ! package_is_installed "fd"; then
 
     downloadUrl="https://github.com/sharkdp/fd/releases/download/v7.3.0/fd_7.3.0_amd64.deb"
