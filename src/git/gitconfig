@@ -54,19 +54,24 @@
 
     b = "!f() { \
         widest_branch_name=$(git branch --format='%(refname:short)' \"$@\" | awk '{ print length() }' | sort -r -n | head -1); \
-        width=$(($widest_branch_name + 5)); \
+        width=$(($widest_branch_name + 4)); \
         \
         format=\"%(HEAD) \
-%(align:$width)%(color:green bold)%(refname:short)%(end) \
-%(if)%(upstream)%(then) %(color:red)(%(upstream:short)%(color:reset) \
-%(if)%(upstream:track)%(then): %(upstream:track,nobracket) \
-%(end)%(color:red))\
+%(align:$width)\
+%(if)%(HEAD)%(then)%(color:bold)%(end)\
+%(color:green)%(refname:short)\
+%(if)%(upstream)%(then) %(color:red)(%(upstream:short)%(color:reset)\
+%(if)%(upstream:track)%(then): %(upstream:track,nobracket)\
+%(end)%(color:red)\
+%(if)%(HEAD)%(then)%(color:bold)%(end))\
 %(end)\
-%(color:reset)- \
+%(end)\
+%(color:reset) - \
 %(color:magenta)%(objectname:short) \
 %(color:yellow)%(committerdate:relative) \
-%(color:red)%(contents:subject) \
-%(color:cyan)(%(authorname))\
+%(color:cyan)(%(authorname)) \
+%(color:reset)\
+%(color:dim)%(contents:subject)\
 %(color:reset)\"; \
         \
 		git branch -vv --sort=-committerdate --format=\"$format\" \"$@\"; \
