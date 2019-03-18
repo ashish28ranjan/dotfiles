@@ -98,6 +98,15 @@ export HISTSIZE=10000
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Prepend $HOME/.local/share/info to INFOPATH, if not already exists
+
+[[ ":$INFOPATH:" != *":$HOME/.local/share/info:"* ]] \
+    && INFOPATH="$HOME/.local/share/info:$INFOPATH"
+
+export INFOPATH
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Prefer US English and use UTF-8 encoding.
 
 export LANG="en_US"
@@ -120,6 +129,15 @@ export LESS_TERMCAP_us=$(printf "\e[1;32m")
 # Highlight searches and ignore case.
 
 export MANPAGER="less --tabs=4 --ignore-case --hilite-search --squeeze-blank-lines"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Prepend $HOME/.local/share/man to MANPATH, if not already exists
+
+[[ ":$MANPATH:" != *":$HOME/.local/share/man:"* ]] \
+    && MANPATH="$HOME/.local/share/man:$MANPATH"
+
+export MANPATH
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
