@@ -21,82 +21,6 @@ enable_color_support() {
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# [!] Don't break this function into smaller, more specialized ones
-# as you will only pollute the global space even more. This function
-# cannot be unset because it's called every time the prompt string
-# is shown.
-
-get_git_repository_details() {
-
-    local branchName=""
-    local tmp=""
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Check if the current directory is in a Git repository.
-
-    ! git rev-parse &>/dev/null \
-        && return
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Check if in `.git/` directory (some of the following
-    # checks don't make sense/won't work in the `.git` directory).
-
-    [ "$(git rev-parse --is-inside-git-dir)" == "true" ] \
-        && return
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Check for uncommitted changes in the index.
-
-    if ! git diff --quiet --ignore-submodules --cached; then
-        tmp="$tmp+";
-    fi
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Check for unstaged changes.
-
-    if ! git diff-files --quiet --ignore-submodules --; then
-        tmp="$tmp!";
-    fi
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Check for untracked files.
-
-    if [ -n "$(git ls-files --others --exclude-standard)" ]; then
-        tmp="$tmp?";
-    fi
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Check for stashed files.
-
-    if git rev-parse --verify refs/stash &>/dev/null; then
-        tmp="$tmp$";
-    fi
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    [ -n "$tmp" ] \
-        && tmp=" [$tmp]"
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    branchName="$( printf "%s" "$( git rev-parse --abbrev-ref HEAD 2> /dev/null \
-        || git rev-parse --short HEAD 2> /dev/null \
-        || printf " (unknown)" )" | tr -d "\n" )"
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    printf "%s" "$1$branchName$tmp "
-
-}
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 set_prompts() {
 
     local reset=$(tput sgr0 2> /dev/null)
@@ -183,7 +107,6 @@ set_prompts() {
             if [ -n "$NIX_BINTOOLS" ]; then
               PS1+="$purple]"
             fi
-            PS1+=" "
             ;;
         "nano")
             if [ -n "$NIX_BINTOOLS" ]; then
@@ -193,24 +116,29 @@ set_prompts() {
             if [ -n "$NIX_BINTOOLS" ]; then
               PS1+="$purple]"
             fi
-            PS1+=" "
             ;;
     esac
 
     # Fetch git repository details
     case $1 in
         "")
-            PS1+="\$(get_git_repository_details \"$grey› $cyan\")"
+            PS1+="$cyan\$(__git_ps1)"
             ;;
         "mini" | "micro" | "nano")
             if [ "$2" = "git" ]; then
-                PS1+="\$(get_git_repository_details \"$grey› $cyan\")"
+                PS1+="$cyan\$(__git_ps1)"
             fi
             ;;
         "pico")
             if [ "$2" = "git" ]; then
-                PS1+="\$(get_git_repository_details \"$grey$cyan\")"
+                PS1+="$cyan\$(__git_ps1)"
             fi
+            ;;
+    esac
+
+    case $1 in
+        "" | "mini" | "micro" | "nano")
+            PS1+=" "
             ;;
     esac
 

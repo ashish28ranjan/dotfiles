@@ -1,11 +1,14 @@
 #!/bin/bash
 
 if [ -f "autocomplete/$OS/bash_autocomplete" ]; then
-   . "autocomplete/$OS/bash_autocomplete"
+    . "autocomplete/$OS/bash_autocomplete"
 fi
 
-if [ -f "../git/git_completion.sh" ]; then
-   . "../git/git_completion.sh"
-   __git_complete g __git_main
+if [ -f "../git/git-completion.sh" ]; then
+    . "../git/git-completion.sh"
+    __git_complete g __git_main
 fi
 
+if [ -f "../git/git-prompt.sh" ]; then
+    . "../git/git-prompt.sh"
+fi
