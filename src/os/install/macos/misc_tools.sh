@@ -9,6 +9,9 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 print_in_purple "\n   Miscellaneous Tools\n\n"
 
 
+tmpDir="$(mktemp -d /tmp/XXXXX)"
+
+
 brew_install "aria2" "aria2"
 
 brew_install "bat" "bat"
