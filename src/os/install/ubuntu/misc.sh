@@ -9,6 +9,8 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 print_in_purple "\n   Miscellaneous\n\n"
 
 
+install_package "Meld" "meld"
+
 if ! package_is_installed "redshift"; then
 
     add_ppa "dobey/redshift-daily" \

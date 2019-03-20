@@ -9,5 +9,6 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 print_in_purple "\n   Miscellaneous\n\n"
 
 
+install_package "Meld" "meld"
 install_package "Redshift" "redshift redshift-gtk"
 install_package "VLC" "vlc"
