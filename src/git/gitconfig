@@ -116,20 +116,8 @@
 
     # Calculate commits count.
 
-    # If no arguments are provided to this function, then:
-    # if git is in a detached head state, use to top-most hash
-    # otherwise, use the current branch
-
     cnt = "!f() { \
-        ref=\"$1\"; \
-        if [ -z \"$1\" ]; then \
-            head=$(git rev-parse --abbrev-ref HEAD); \
-            ref=\"$head\"; \
-            if [ \"$head\" == \"HEAD\" ]; then \
-                ref=$(git log -1 --pretty=%h); \
-            fi; \
-        fi; \
-        git shortlog --summary \"$ref\" \
+        git shortlog --summary \"$1\" \
             | awk '{ sum += $1; } END { if (sum > 0) print sum; }'; \
     }; f"
 
