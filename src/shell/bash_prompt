@@ -100,21 +100,27 @@ set_prompts() {
             PS1+="$grey: "
             ;&
         "" | "mini" | "micro")
-            if [ -n "$NIX_BINTOOLS" ]; then
-              PS1+="$purple["
+            if [ -n "$IN_NIX_SHELL" ]; then
+                PS1+="$purple["
             fi
             PS1+="$dir_color\w"        # Working directory
-            if [ -n "$NIX_BINTOOLS" ]; then
-              PS1+="$purple]"
+            if [ -n "$IN_NIX_SHELL" ]; then
+                PS1+="$purple]"
+                if [ "$IN_NIX_SHELL" == "pure" ]; then
+                    PS1+="."
+                fi
             fi
             ;;
         "nano")
-            if [ -n "$NIX_BINTOOLS" ]; then
-              PS1+="$purple["
+            if [ -n "$IN_NIX_SHELL" ]; then
+                PS1+="$purple["
             fi
             PS1+="$dir_color\W"        # Basename of working directory
-            if [ -n "$NIX_BINTOOLS" ]; then
-              PS1+="$purple]"
+            if [ -n "$IN_NIX_SHELL" ]; then
+                PS1+="$purple]"
+                if [ "$IN_NIX_SHELL" == "pure" ]; then
+                    PS1+="."
+                fi
             fi
             ;;
     esac
