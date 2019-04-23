@@ -677,6 +677,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'dominikduda/vim_current_word'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'farmergreg/vim-lastplace'
+  Plug 'google/vim-searchindex'
   Plug 'jeetsukumaran/vim-filebeagle'
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
