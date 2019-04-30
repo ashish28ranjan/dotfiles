@@ -11,6 +11,7 @@ upgrade
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+./build-essentials.sh
 ./browsers.sh
 ./compression_tools.sh
 ./fonts.sh
