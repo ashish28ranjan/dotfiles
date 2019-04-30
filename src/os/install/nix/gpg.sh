@@ -16,7 +16,4 @@ case "$(get_os)" in
     macos)
         nix_install "Pinentry Mac" "nixpkgs.pinentry_mac"
         ;;
-    *)
-        break
-        ;;
 esac
