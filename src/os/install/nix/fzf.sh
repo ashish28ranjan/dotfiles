@@ -2,13 +2,12 @@
 
 cd "$(dirname "${BASH_SOURCE[0]}")" \
     && . "../../utils.sh" \
-    && . "./utils.sh"
+    && . "utils.sh"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-print_in_purple "\n   GPG\n\n"
+print_in_purple "\n   Fzf\n\n"
 
-./../gpg.sh
+./../fzf.sh
 
-install_package "GPG" "gnupg"
-install_package "GPG 2" "gnupg2"
+nix_install "fzf" "nixpkgs.fzf"

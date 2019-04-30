@@ -6,6 +6,10 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+print_in_purple "\n   GPG\n\n"
+
+./../gpg.sh
+
 brew_install "GPG" "gpg"
 brew_install "GPG 2" "gpg2"
 

@@ -6,9 +6,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-print_in_purple "\n   GPG\n\n"
+print_in_purple "\n   Fonts\n\n"
 
-./../gpg.sh
-
-install_package "GPG" "gnupg"
-install_package "GPG 2" "gnupg2"
+nix_install "Iosevka" "nixpkgs.iosevka-bin"
+nix_install "Ubuntu Font Family" "nixpkgs.ubuntu_font_family"

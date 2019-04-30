@@ -22,13 +22,7 @@ basic_setup() {
 
 main() {
 
-    print_in_purple "\n   Fzf\n\n"
-
     basic_setup
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    "./$(get_os)/fzf.sh"
 
 }
 

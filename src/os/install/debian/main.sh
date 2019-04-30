@@ -20,9 +20,9 @@ upgrade
 ./../nvm.sh
 
 ./compression_tools.sh
-./../fzf.sh
+./fzf.sh
 ./git.sh
-./../gpg.sh
+./gpg.sh
 ./misc_tools.sh
 ./../npm.sh
 ./../neovim.sh

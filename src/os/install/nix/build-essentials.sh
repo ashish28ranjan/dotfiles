@@ -6,9 +6,8 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-print_in_purple "\n   GPG\n\n"
+print_in_purple "\n   Build Essentials\n\n"
 
-./../gpg.sh
-
-install_package "GPG" "gnupg"
-install_package "GPG 2" "gnupg2"
+nix_install "Wget" "nixpkgs.wget"
+nix_install "gcc" "nixpkgs.gcc-unwrapped"
+nix_install "OpenSSH" "nixpkgs.openssh"

@@ -8,6 +8,10 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 main() {
 
+    print_in_purple "\n   Fzf\n\n"
+
+    ./../fzf.sh
+
     if ! cmd_exists "fzf"; then
 
         tmpDir="$(mktemp -d /tmp/XXXXX)"

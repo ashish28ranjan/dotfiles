@@ -6,9 +6,8 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-print_in_purple "\n   GPG\n\n"
+print_in_purple "\n   Compression Tools\n\n"
 
-./../gpg.sh
+nix_install "Brotli" "nixpkgs.brotli"
+nix_install "Zopfli" "nixpkgs.zopfli"
 
-install_package "GPG" "gnupg"
-install_package "GPG 2" "gnupg2"
