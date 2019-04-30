@@ -33,6 +33,11 @@ alias pping='prettyping --nolegend'
 alias rg='rg --smart-case'
 alias rmf="rm -rf"
 alias v="nvim"
+alias xb="nix-build"
+alias xc="nix-channel"
+alias xe="nix-env"
+alias xs="nix-shell"
+alias xt="nix-store"
 alias y="yarn"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
