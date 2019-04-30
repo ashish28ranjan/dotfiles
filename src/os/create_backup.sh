@@ -33,7 +33,12 @@ init_backup() {
 finish_backup() {
 
     # https://unix.stackexchange.com/questions/8430/how-to-remove-all-empty-directories-in-a-subtree
-    find "$BACKUP_DIR" -type d -empty -delete
+    find "$BACKUP_DIR" -type d -empty -delete > /dev/null 2>&1
+
+    # The following rmdir command is added as hack to delete the topmost
+    # directory on MacOS. The exact bug is mentioned in the link.
+    # https://unix.stackexchange.com/questions/497666/relative-path-potentially-not-safe-error-with-find-delete-on-macos
+    rmdir "$BACKUP_DIR" > /dev/null 2>&1
 
     if [ -d "$BACKUP_DIR" ]; then
         print_success "Backup created successfully"
