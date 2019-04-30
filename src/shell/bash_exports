@@ -5,6 +5,12 @@
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Set bat theme to TwoDark
+
+export BAT_THEME="TwoDark"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Make `nvim` the default editor.
 
 export EDITOR="nvim"
