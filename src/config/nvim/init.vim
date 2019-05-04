@@ -63,6 +63,7 @@ set listchars+=tab:>-          " │
 set listchars+=trail:◦         " ┘
 
 set magic                      " Enable extended regexp.
+set mouse=a                    " Enable mouse.
 set mousehide                  " Hide mouse pointer while typing.
 set noerrorbells               " Disable error bells.
 
