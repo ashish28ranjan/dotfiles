@@ -27,6 +27,7 @@ upgrade
 ./../npm.sh
 ./../neovim.sh
 ./../pyenv.sh
+./scripts.sh
 ./tmux.sh
 ./../tmuxifier.sh
 

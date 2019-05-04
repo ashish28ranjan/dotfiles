@@ -22,6 +22,7 @@ upgrade
 ./misc.sh
 ./misc_tools.sh
 ./../neovim.sh
+./scripts.sh
 ./../tmuxifier.sh
 
 ./cleanup.sh
