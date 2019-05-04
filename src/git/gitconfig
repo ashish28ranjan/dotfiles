@@ -19,6 +19,8 @@
     st   = stash
     r    = reset
     rt   = remote
+    y    = ydiff
+    yc   = ydiff --cached
 
     # Kaleidoscope commands
     dkal = difftool -y -t Kaleidoscope
