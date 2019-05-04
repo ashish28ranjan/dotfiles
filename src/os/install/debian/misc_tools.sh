@@ -105,3 +105,9 @@ if [ -d "$HOME/.nvm" ]; then
     install_package "Yarn" "yarn" "--no-install-recommends"
 fi
 
+
+if [ ! -f "$HOME/bin/ydiff" ]; then
+    wget -qO "$HOME/bin/ydiff" "https://raw.github.com/ymattw/ydiff/master/ydiff.py" &> /dev/null
+fi
+execute "chmod +x '$HOME/bin/ydiff'" \
+        "Ydiff"
