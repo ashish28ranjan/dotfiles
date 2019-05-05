@@ -55,8 +55,8 @@ create_full_path_symlinks() {
 
     declare -a FILES_TO_SYMLINK=(
 
-        "config/fzf/shell/fzf.bash"
         "config/fzf/shell/completion.bash"
+        "config/fzf/shell/fzf.bash"
         "config/fzf/shell/key-bindings.bash"
         "config/nixpkgs/config.nix"
         "config/nvim/init.vim"
