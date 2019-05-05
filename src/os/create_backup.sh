@@ -111,6 +111,9 @@ create_full_path_backup() {
 
     declare -a FILES_TO_BACKUP=(
 
+        "config/fzf/shell/completion.bash"
+        "config/fzf/shell/fzf.bash"
+        "config/fzf/shell/key-bindings.bash"
         "config/nixpkgs/config.nix"
         "config/nvim/init.vim"
         "config/redshift.conf"
