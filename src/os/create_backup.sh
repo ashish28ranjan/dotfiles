@@ -111,6 +111,7 @@ create_full_path_backup() {
 
     declare -a FILES_TO_BACKUP=(
 
+        "config/nixpkgs/config.nix"
         "config/nvim/init.vim"
         "config/redshift.conf"
 
