@@ -21,9 +21,15 @@ nix_install() {
     declare -r PACKAGE="$2"
     declare -r PACKAGE_READABLE_NAME="$1"
 
-    execute \
-        "nix-env --install --attr $PACKAGE" \
-        "$PACKAGE_READABLE_NAME"
+    local installedFlag="$(nix-env -qasA $PACKAGE | cut -c1)"
+
+    if [ "$installedFlag" == "I" ]; then
+        print_success "$PACKAGE_READABLE_NAME"
+    else
+        execute \
+            "nix-env --install --attr $PACKAGE" \
+            "$PACKAGE_READABLE_NAME"
+    fi
 
 }
 
