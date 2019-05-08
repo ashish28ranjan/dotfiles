@@ -4,6 +4,8 @@ These are the base dotfiles that I start with when I set up a
 new environment. For more specific local needs I use the `.local`
 files described in the [`Local Settings`](#local-settings) section.
 
+**Note:** This project is a fork of [`Cătălin’s dotfiles`](https://github.com/alrra/dotfiles). However, I have modified it so much according to my preferences and use cases that it is now virtually impossible to merge it to upstream.
+
 ## Setup
 
 To set up the `dotfiles` just run the appropriate snippet in the
