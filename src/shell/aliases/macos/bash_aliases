@@ -50,7 +50,7 @@ alias show-desktop-icons="defaults write com.apple.finder CreateDesktop -bool tr
 
 # Get local IP.
 
-alias local-ip="ipconfig getifaddr en1"
+alias local-ip="ipconfig getifaddr en0"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
