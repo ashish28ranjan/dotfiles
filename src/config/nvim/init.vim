@@ -700,6 +700,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-unimpaired'
   Plug 'wellle/targets.vim'
+  Plug 'whiteinge/diffconflicts'
   Plug 'vim-scripts/ShowTrailingWhitespace'
   Plug 'Yggdroot/indentLine'
 
