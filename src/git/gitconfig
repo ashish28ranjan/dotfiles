@@ -21,8 +21,6 @@
     st   = stash
     r    = reset
     rt   = remote
-    y    = ydiff
-    yc   = ydiff --cached
 
     # Log
     l    = log --graph --pretty=custom      # Show custom graph.

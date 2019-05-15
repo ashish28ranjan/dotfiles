@@ -75,6 +75,3 @@ brew_install "tree" "tree"
 if [ -d "$HOME/.nvm" ]; then
     brew_install "Yarn" "yarn" "" "" "--without-node"
 fi
-
-
-brew_install "Ydiff" "ydiff"
