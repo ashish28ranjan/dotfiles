@@ -246,6 +246,10 @@
 
     prompt = false
 
+[icdiff]
+
+    options = --color-map=description:cyan --numlines=4
+
 [grep]
 
     extendRegexp = true
