@@ -13,6 +13,8 @@
     dc   = diff --cached
     f    = fetch
     git  = !exec git                        # Allow `$ git git git...`
+    i    = icdiff
+    ic   = icdiff --cached
     s    = status
     sh   = show
     sl   = shortlog
