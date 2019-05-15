@@ -38,6 +38,14 @@ brew_install "glances" "glances"
 
 brew_install "htop" "htop"
 
+
+if [ ! -f "$HOME/bin/icdiff" ]; then
+    wget -qO "$HOME/bin/icdiff" "https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.9.4/icdiff" &> /dev/null
+fi
+execute "chmod +x '$HOME/bin/icdiff'" \
+        "Icdiff"
+
+
 brew_install "iTerm2" "iterm2" "caskroom/cask" "cask"
 
 

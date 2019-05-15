@@ -70,6 +70,13 @@ install_package "glances" "glances"
 install_package "htop" "htop"
 
 
+if [ ! -f "$HOME/bin/icdiff" ]; then
+    wget -qO "$HOME/bin/icdiff" "https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.9.4/icdiff" &> /dev/null
+fi
+execute "chmod +x '$HOME/bin/icdiff'" \
+        "Icdiff"
+
+
 if [ ! -f "$HOME/bin/prettyping" ]; then
     wget -qO "$HOME/bin/prettyping" "https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping" &> /dev/null
 fi
