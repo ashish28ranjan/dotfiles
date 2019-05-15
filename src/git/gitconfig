@@ -29,6 +29,7 @@
     # Log
     l    = log --graph --pretty=custom      # Show custom graph.
     lc   = shortlog --email --numbered --summary    # List contributors.
+    lk   = log --graph --pretty=custom -10  # Sneak look at logs
 
     # Pull & Push
     pl   = pull
