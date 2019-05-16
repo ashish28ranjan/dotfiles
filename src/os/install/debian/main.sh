@@ -28,6 +28,7 @@ upgrade
 ./../neovim.sh
 ./../pyenv.sh
 ./scripts.sh
+./../ssh.sh
 ./tmux.sh
 ./../tmuxifier.sh
 

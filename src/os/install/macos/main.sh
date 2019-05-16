@@ -23,6 +23,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 ./../neovim.sh
 ./../pyenv.sh
 ./scripts.sh
+./../ssh.sh
 ./tmux.sh
 ./../tmuxifier.sh
 ./video_tools.sh
