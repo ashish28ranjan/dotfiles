@@ -12,6 +12,7 @@ create_directories() {
         "$HOME/.local/share/fonts"
         "$HOME/.local/share/info"
         "$HOME/.local/share/man"
+        "$HOME/.ssh/sockets"
         "$HOME/bin"
         "$HOME/projects"
         "$HOME/tools"
