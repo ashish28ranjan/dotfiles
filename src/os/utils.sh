@@ -226,6 +226,28 @@ get_os_version() {
 
 }
 
+install_binary() {
+
+    declare -r PACKAGE="$1"
+    declare -r PACKAGE_PATH="$HOME/bin/$PACKAGE"
+    declare -r SOURCE_URL="$2"
+
+    if [ ! -f "$PACKAGE_PATH" ]; then
+        if cmd_exists "curl"; then
+            curl -fLo "$PACKAGE_PATH" "$SOURCE_URL" &> /dev/null
+            #     │└─  Fail silently on server errors
+            #     └─ Follow redirects
+        else
+            wget -qO "$PACKAGE_PATH" "$SOURCE_URL" &> /dev/null
+            #     └─  Quiet
+        fi
+    fi
+
+    execute "chmod +x $PACKAGE_PATH" \
+        "$PACKAGE"
+
+}
+
 is_desktop_enabled() {
 
     while :; do

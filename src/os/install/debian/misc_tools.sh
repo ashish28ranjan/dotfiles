@@ -27,12 +27,8 @@ install_deb_package "bat" "bat" "$tmpDir/bat.deb"
 
 install_package "cURL" "curl"
 
-
-if [ ! -f "$HOME/bin/diff-so-fancy" ]; then
-    wget -qO "$HOME/bin/diff-so-fancy" "https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy" &> /dev/null
-fi
-execute "chmod +x '$HOME/bin/diff-so-fancy'" \
-        "diff-so-fancy"
+install_binary "diff-so-fancy" \
+    "https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy"
 
 
 if [ ! -f "$HOME/bin/exa" ]; then
@@ -58,20 +54,11 @@ install_package "ffmpeg" "ffmpeg libav-tools x264 x265"
 install_package "glances" "glances"
 install_package "htop" "htop"
 
+install_binary "icdiff" \
+    "https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.9.4/icdiff"
 
-if [ ! -f "$HOME/bin/icdiff" ]; then
-    wget -qO "$HOME/bin/icdiff" "https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.9.4/icdiff" &> /dev/null
-fi
-execute "chmod +x '$HOME/bin/icdiff'" \
-        "Icdiff"
-
-
-if [ ! -f "$HOME/bin/prettyping" ]; then
-    wget -qO "$HOME/bin/prettyping" "https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping" &> /dev/null
-fi
-execute "chmod +x '$HOME/bin/prettyping'" \
-        "prettyping"
-
+install_binary "prettyping" \
+    "https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping"
 
 execute "pip install --user pipenv" \
         "Pipenv"

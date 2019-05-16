@@ -16,11 +16,8 @@ brew_install "aria2" "aria2"
 
 brew_install "bat" "bat"
 
-if [ ! -f "$HOME/bin/diff-so-fancy" ]; then
-    wget -qO "$HOME/bin/diff-so-fancy" "https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy" &> /dev/null
-fi
-execute "chmod +x '$HOME/bin/diff-so-fancy'" \
-        "diff-so-fancy"
+install_binary "diff-so-fancy" \
+    "https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy"
 
 
 if [ ! -f "$HOME/bin/exa" ]; then
@@ -38,23 +35,13 @@ brew_install "glances" "glances"
 
 brew_install "htop" "htop"
 
-
-if [ ! -f "$HOME/bin/icdiff" ]; then
-    wget -qO "$HOME/bin/icdiff" "https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.9.4/icdiff" &> /dev/null
-fi
-execute "chmod +x '$HOME/bin/icdiff'" \
-        "Icdiff"
-
+install_binary "icdiff" \
+    "https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.9.4/icdiff"
 
 brew_install "iTerm2" "iterm2" "caskroom/cask" "cask"
 
-
-if [ ! -f "$HOME/bin/prettyping" ]; then
-    wget -qO "$HOME/bin/prettyping" "https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping" &> /dev/null
-fi
-execute "chmod +x '$HOME/bin/prettyping'" \
-        "prettyping"
-
+install_binary "prettyping" \
+    "https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping"
 
 brew_install "Python3" "python3"
 
@@ -64,9 +51,7 @@ execute "sudo -H pip3 install --upgrade pip" \
 execute "pip3 install --user pipenv" \
         "Pipenv"
 
-
 brew_install "ripgrep (rg)" "ripgrep"
-
 brew_install "ShellCheck" "shellcheck"
 brew_install "The Silver Searcher (ag)" "the_silver_searcher"
 brew_install "tree" "tree"
