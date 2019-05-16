@@ -5,6 +5,8 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+print_in_purple "\n   SSH\n\n"
+
 main() {
 
     # Own .ssh folder
@@ -18,6 +20,8 @@ main() {
 
     # Make .ssh rwx------
     chmod 700 "$HOME/.ssh"
+
+    print_success "$HOME/.ssh permissions"
 
 }
 
