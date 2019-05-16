@@ -5,6 +5,36 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+create_assh_local() {
+
+    declare -r FILE_PATH="$HOME/.ssh/assh.local.yml"
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    if [ ! -e "$FILE_PATH" ]; then
+        printf "%s\n" \
+"templates:
+  # Templates are similar to Hosts; you can inherit from them
+  # but you cannot ssh to a template
+  gpg-agent-template:
+    RemoteForward: $HOME/.gnupg/S.gpg-agent $HOME/.gnupg/S.gpg-agent.extra
+
+
+hosts:
+
+  example:
+    HostName: example.com
+    User: johndoe
+    Inherits:
+    - gpg-agent-template
+"\
+        >> "$FILE_PATH"
+    fi
+
+    print_result $? "$FILE_PATH"
+
+}
+
 create_bash_local() {
 
     declare -r FILE_PATH="$HOME/.bash.local"
@@ -213,6 +243,7 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+    create_assh_local
     create_bash_local
     create_gitconfig_local "$@"
     create_gpg_conf_local

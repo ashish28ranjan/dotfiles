@@ -121,6 +121,8 @@ create_full_path_backup() {
         "gnupg/gpg.conf"
         "gnupg/gpg-agent.conf"
 
+        "ssh/assh.yml"
+
     )
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
