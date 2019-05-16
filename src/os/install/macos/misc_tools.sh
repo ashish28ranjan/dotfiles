@@ -14,6 +14,9 @@ tmpDir="$(mktemp -d /tmp/XXXXX)"
 
 brew_install "aria2" "aria2"
 
+install_binary "assh" \
+    "https://github.com/moul/assh/releases/download/v2.8.0/assh_darwin_amd64"
+
 brew_install "bat" "bat"
 
 install_binary "diff-so-fancy" \

@@ -9,6 +9,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 print_in_purple "\n   Miscellaneous Tools\n\n"
 
 nix_install "aria2" "nixpkgs.aria"
+nix_install "assh" "nixpkgs.assh"
 nix_install "bat" "nixpkgs.bat"
 nix_install "curl" "nixpkgs.curlFull"
 nix_install "diff-so-fancy" "nixpkgs.gitAndTools.diff-so-fancy"

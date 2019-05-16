@@ -14,6 +14,9 @@ tmpDir="$(mktemp -d /tmp/XXXXX)"
 
 install_package "aria2" "aria2"
 
+install_binary "assh" \
+    "https://github.com/moul/assh/releases/download/v2.8.0/assh_linux_amd64"
+
 
 if ! package_is_installed "bat"; then
 
