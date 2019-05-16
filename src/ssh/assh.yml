@@ -6,7 +6,7 @@ defaults:
   ConnectionAttempts: 1
   ControlMaster: auto
   ControlPath: ~/.ssh/sockets/%h-%p-%r
-  ControlPersist: 7200
+  ControlPersist: 4h
   HashKnownHosts: yes
   PasswordAuthentication: no
   Port: 22
