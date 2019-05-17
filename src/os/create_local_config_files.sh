@@ -178,60 +178,26 @@ create_gpg_conf_local() {
 
 create_ssh_config_local() {
 
-    declare -r FILE_PATH="$HOME/.ssh/config"
-
-    # Create the full folder structure
-    mkdir -p "$(dirname $FILE_PATH)"
+    declare -r FILE_PATH="$HOME/.ssh/config.local"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    configData="Host *
-  ChallengeResponseAuthentication no
-  CheckHostIP yes
-  Compression yes
-  ConnectionAttempts 1
-  HashKnownHosts no
-  PasswordAuthentication no
-  Port 22
-  PubkeyAuthentication yes
-  RekeyLimit 100M 3600
-  StrictHostKeyChecking ask
-  TCPKeepAlive yes
-  UseRoaming no
-  Ciphers           chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
-  HostKeyAlgorithms ssh-ed25519-cert-v01@openssh.com,ssh-ed25519,ssh-rsa-cert-v01@openssh.com,ssh-rsa
-  KexAlgorithms     curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
-  MACs              hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com
+    if [ ! -e "$FILE_PATH" ] || [ -z "$FILE_PATH" ]; then
 
-
-Host github.com
-  # Github needs diffie-hellman-group-exchange-sha1 some of the time but not always.
-  Hostname ssh.github.com
-  KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1
-  Port 443
-
-
-# Host example
-#   User dev
-#   HostName dev.example.com
+        printf "%s\n" \
+"# Host example
+#   HostName example.com
+#   User johndoe
 #   IdentityAgent SSH_AUTH_SOCK
-#   IdentityFile ~/.ssh/id_dsa
 #   IdentityFile ~/.ssh/id_rsa
-#   PasswordAuthentication no
-#   UserKnownHostsFile ~/.ssh/known_hosts
 #   PermitLocalCommand yes
 #   LocalCommand \"uname -a\"
 #   RemoteCommand \"uname -a\"
-"
-
-    if [ ! -e "$FILE_PATH" ] || [ -z "$FILE_PATH" ]; then
-
-        printf "%s\n" "$configData"\
-            >> "$FILE_PATH" \
-            && chmod 600 "$FILE_PATH" \
-            && print_result $? "$FILE_PATH"
-
+"\
+        >> "$FILE_PATH"
     fi
+
+    print_result $? "$FILE_PATH"
 
 }
 

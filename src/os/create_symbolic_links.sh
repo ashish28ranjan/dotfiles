@@ -66,6 +66,7 @@ create_full_path_symlinks() {
         "gnupg/gpg-agent.conf"
 
         "ssh/assh.yml"
+        "ssh/config"
 
     )
 

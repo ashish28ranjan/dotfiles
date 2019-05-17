@@ -1,0 +1,18 @@
+Host *
+  CheckHostIP yes
+  Ciphers chacha20-poly1305@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr,3des-cbc,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-cbc,aes192-cbc,aes128-cbc
+  Compression yes
+  ConnectionAttempts 1
+  ControlMaster auto
+  ControlPath ~/.ssh/sockets/%h-%p-%r
+  ControlPersist 4h
+  HashKnownHosts yes
+  PasswordAuthentication no
+  Port 22
+  PubkeyAuthentication yes
+  RekeyLimit 100M 3600
+  StrictHostKeyChecking ask
+  TCPKeepAlive yes
+  UserKnownHostsFile ~/.ssh/known_hosts
+
+Include ~/.ssh/config.local
