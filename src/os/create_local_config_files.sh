@@ -173,31 +173,6 @@ create_gpg_conf_local() {
 
 }
 
-create_ssh_config_local() {
-
-    declare -r FILE_PATH="$HOME/.ssh/config.local"
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    if [ ! -e "$FILE_PATH" ] || [ -z "$FILE_PATH" ]; then
-
-        printf "%s\n" \
-"# Host example
-#   HostName example.com
-#   User johndoe
-#   IdentityAgent SSH_AUTH_SOCK
-#   IdentityFile ~/.ssh/id_rsa
-#   PermitLocalCommand yes
-#   LocalCommand \"uname -a\"
-#   RemoteCommand \"uname -a\"
-"\
-        >> "$FILE_PATH"
-    fi
-
-    print_result $? "$FILE_PATH"
-
-}
-
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 main() {
@@ -210,7 +185,6 @@ main() {
     create_bash_local
     create_gitconfig_local "$@"
     create_gpg_conf_local
-    create_ssh_config_local
     create_vimrc_local
 
 }
