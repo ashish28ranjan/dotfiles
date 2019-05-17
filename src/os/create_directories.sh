@@ -9,6 +9,7 @@ create_directories() {
 
     declare -a DIRECTORIES=(
         "$HOME/.config/tmuxifier"
+        "$HOME/.gnupg"
         "$HOME/.local/share/fonts"
         "$HOME/.local/share/info"
         "$HOME/.local/share/man"

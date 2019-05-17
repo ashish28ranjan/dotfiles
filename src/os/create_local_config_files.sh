@@ -134,9 +134,6 @@ create_gpg_conf_local() {
 
     declare -r FILE_PATH="$HOME/.gnupg/gpg.conf.local"
 
-    # Create the full folder structure
-    mkdir -p "$(dirname $FILE_PATH)"
-
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     if [ ! -e "$FILE_PATH" ] || [ -z "$FILE_PATH" ]; then
