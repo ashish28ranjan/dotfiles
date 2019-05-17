@@ -462,3 +462,13 @@ qt() {
     #   │└─ search all files under each directory, recursively
     #   └─ ignore case
 }
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Switch directories on the basis of frecency
+# https://github.com/rupa/z
+
+z() {
+    [ $# -gt 0 ] && _z "$@" && return
+    cd "$(_z -l 2>&1 | sed 's/^[0-9,.]* *//' | awk '{a[i++]=$0} END {for (j=i-1; j>=0;) print a[j--] }' | fzf)"
+}

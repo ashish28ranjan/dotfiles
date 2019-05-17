@@ -5,6 +5,18 @@
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Change the z database location
+
+export _Z_DATA="$HOME/.local/share/z.db"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Do not resolve symlinks in z
+
+export _Z_NO_RESOLVE_SYMLINKS=1
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Set bat theme to TwoDark
 
 export BAT_THEME="TwoDark"

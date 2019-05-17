@@ -117,6 +117,7 @@ create_full_path_backup() {
         "config/nixpkgs/config.nix"
         "config/nvim/init.vim"
         "config/redshift.conf"
+        "config/z/shell/z.sh"
 
         "gnupg/gpg.conf"
         "gnupg/gpg-agent.conf"
