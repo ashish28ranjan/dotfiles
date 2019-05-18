@@ -30,6 +30,7 @@
 
     # Pull & Push
     pl   = pull
+    plom = pull origin master
     plum = pull upstream master
     pom  = push origin master
     pu   = push
