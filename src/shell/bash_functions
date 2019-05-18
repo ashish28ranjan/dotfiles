@@ -465,6 +465,14 @@ qt() {
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Search nix packages
+
+xes() {
+    nix-env -qaP ".*($1).*" | fzf
+}
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Switch directories on the basis of frecency
 # https://github.com/rupa/z
 
