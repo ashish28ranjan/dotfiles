@@ -41,6 +41,7 @@ brew_install "htop" "htop"
 install_binary "icdiff" \
     "https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.9.4/icdiff"
 
+brew_install "imgcat" "imgcat" "eddieantonio/eddieantonio"
 brew_install "iTerm2" "iterm2" "caskroom/cask" "cask"
 
 install_binary "prettyping" \
