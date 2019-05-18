@@ -11,4 +11,5 @@ print_in_purple "\n   Miscellaneous\n\n"
 
 install_package "Meld" "meld"
 install_package "Redshift" "redshift redshift-gtk"
+install_package "Sxiv" "sxiv"
 install_package "VLC" "vlc"

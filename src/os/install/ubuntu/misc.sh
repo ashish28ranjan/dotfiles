@@ -23,5 +23,6 @@ fi
 install_package "Redshift" "redshift redshift-gtk"
 
 
+install_package "Sxiv" "sxiv"
 install_package "Transmission" "transmission"
 install_package "VLC" "vlc"
