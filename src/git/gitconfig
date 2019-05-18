@@ -247,7 +247,7 @@
 
 [icdiff]
 
-    options = --color-map=description:cyan --numlines=4
+    options = --color-map=description:cyan --numlines=3
 
 [grep]
 
