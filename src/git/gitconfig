@@ -278,7 +278,7 @@
 
 [pretty]
 
-    custom = "%C(magenta)%h%C(red)%d %C(green)%ar %C(yellow)%s %C(cyan)(%an)"
+    custom = "%C(magenta)%h%C(205)%d %C(green)%ar %C(yellow)%s %C(cyan)(%an)"
     #                     │        │           │             │           └─ author name
     #                     │        │           │             └─ message
     #                     │        │           └─ date (relative)
