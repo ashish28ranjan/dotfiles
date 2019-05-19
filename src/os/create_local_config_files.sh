@@ -22,11 +22,11 @@ create_assh_local() {
 
 hosts:
 
-  example:
-    HostName: example.com
-    User: johndoe
-    Inherits:
-    - gpg-agent-template
+#  example:
+#    HostName: example.com
+#    User: johndoe
+#    Inherits:
+#    - gpg-agent-template
 "\
         >> "$FILE_PATH"
     fi
