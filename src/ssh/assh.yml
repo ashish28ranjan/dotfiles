@@ -15,5 +15,15 @@ defaults:
   StrictHostKeyChecking: ask
   TCPKeepAlive: yes
 
+
+hosts:
+
+  github.com:
+    # Github needs diffie-hellman-group-exchange-sha1 some of the time but not always.
+    Hostname: ssh.github.com
+    KexAlgorithms: curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1
+    Port: 443
+
+
 includes:
 - ~/.ssh/assh.local.yml
