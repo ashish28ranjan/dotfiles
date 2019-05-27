@@ -47,6 +47,15 @@ set completion-map-case on
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Bracketed paste mode - do not execute a command on pasting stuff in
+# terminal even if it has new lines.
+
+# https://cirw.in/blog/bracketed-paste
+
+set enable-bracketed-paste on
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Automatically add slash to the end of symlinked directories
 # when completing.
 
