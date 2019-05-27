@@ -25,6 +25,7 @@ hosts:
 #  example:
 #    HostName: example.com
 #    User: johndoe
+#    ControlMaster: auto
 #    Inherits:
 #    - gpg-agent-template
 "\

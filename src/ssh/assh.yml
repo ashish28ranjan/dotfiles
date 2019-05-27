@@ -4,7 +4,7 @@ defaults:
   Ciphers: chacha20-poly1305@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr,3des-cbc,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-cbc,aes192-cbc,aes128-cbc
   Compression: yes
   ConnectionAttempts: 1
-  ControlMaster: auto
+  ControlMaster: no
   ControlPath: ~/.ssh/sockets/%h-%p-%r
   ControlPersist: 4h
   HashKnownHosts: yes
@@ -21,6 +21,7 @@ hosts:
   github.com:
     # Github needs diffie-hellman-group-exchange-sha1 some of the time but not always.
     Hostname: ssh.github.com
+    ControlMaster: auto
     ControlPersist: 600
     KexAlgorithms: curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1
     Port: 443
