@@ -169,6 +169,15 @@
         git reset --soft \"HEAD~$n\"; \
     }; f"
 
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    # Undo last rebase, merge, or reset.
+    # https://stackoverflow.com/a/692763
+
+    ulr = "!f() { \
+        git reset --hard ORIG_HEAD; \
+    }; f"
+
 [advice]
 
     waitingForEditor = false
