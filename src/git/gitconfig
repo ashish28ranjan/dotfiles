@@ -26,7 +26,8 @@
     # Log
     l    = log --graph --pretty=custom      # Show custom graph.
     lc   = shortlog --email --numbered --summary    # List contributors.
-    lk   = log --graph --pretty=custom -10  # Sneak look at logs
+    lk   = log --graph --pretty=custom -10  # Sneak look current branch
+    lka  = log --graph --pretty=custom -10 --all    # Sneak look all tree
 
     # Pull & Push
     pl   = pull
