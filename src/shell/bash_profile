@@ -66,12 +66,6 @@ fi
     && source "$HOME/.config/z/shell/z.sh" \
     && unalias z 2> /dev/null
 
-# Initialize pyenv & pyenv-virtualenv
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-fi
-
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Clear system messages (system copyright notice, the date
