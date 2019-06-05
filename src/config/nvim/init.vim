@@ -715,7 +715,7 @@ call plug#end()
 
 set t_Co=256                   " Enable full-color support.
 
-call ChangeTheme(1)            " Change theme
+call ChangeTheme(2)            " Change theme
                                " 1 = PaperColor
                                " 2 = Neodark
 
