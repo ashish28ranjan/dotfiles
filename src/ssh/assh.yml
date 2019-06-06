@@ -1,23 +1,49 @@
 defaults:
   # Defaults are applied to each hosts
+  ChallengeResponseAuthentication: no
+  # Check for changed server IPs or possible DNS spoofings
   CheckHostIP: yes
-  Ciphers: chacha20-poly1305@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr,3des-cbc,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-cbc,aes192-cbc,aes128-cbc
+  # Set standard level of security
+  Ciphers: chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr,3des-cbc,aes256-cbc,aes192-cbc,aes128-cbc
+  # Enable compression
   Compression: yes
+  # Set max tries before exiting to 1
   ConnectionAttempts: 1
+  # Enables the sharing of multiple sessions over a single socket
   ControlMaster: no
   ControlPath: ~/.ssh/sockets/%h-%p-%r
   ControlPersist: 4h
+  # Store hashed domains in known_hosts for extra security
   HashKnownHosts: yes
+  # Disable password authentication (bruteforce attacks, etc.)
   PasswordAuthentication: no
+  # Specify port to connect
   Port: 22
+  # Only enable public key authentication
   PubkeyAuthentication: yes
+  # Regenerate keys after a while
   RekeyLimit: 100M 3600
+  # Ask to verify server fingerprint
   StrictHostKeyChecking: ask
+  # Send keep-alive signals to avoid connection timeout
   TCPKeepAlive: yes
+  # https://security.stackexchange.com/questions/110639/how-exploitable-is-the-recent-useroaming-ssh-problem
+  UseRoaming: no
+  # Display randomart images of hostkeys
+  VisualHostKey: yes
+
+
+templates:
+  # Templates are similar to Hosts; you can inherit from them
+  # but you cannot ssh to a template
+  high-security-template:
+    Ciphers: chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
+    HostKeyAlgorithms: ssh-ed25519-cert-v01@openssh.com,ssh-ed25519,ssh-rsa-cert-v01@openssh.com,ssh-rsa
+    KexAlgorithms: curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
+    MACs: hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com
 
 
 hosts:
-
   github.com:
     # Github needs diffie-hellman-group-exchange-sha1 some of the time but not always.
     Hostname: ssh.github.com
