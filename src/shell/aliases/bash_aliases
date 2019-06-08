@@ -66,6 +66,13 @@ alias grf="fzf_git_reflog"
 
 alias gpg="gpg2 --options $HOME/.gnupg/gpg.conf --options $HOME/.gnupg/gpg.conf.local"
 
+# GPG Agent
+
+# Forget keys
+alias gafk="gpg-connect-agent reloadagent /bye"
+# List keys
+alias galk="gpg-connect-agent 'keyinfo --list' /bye"
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # tmux
