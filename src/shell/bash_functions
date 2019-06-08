@@ -152,7 +152,7 @@ fzf_git_log() {
                     --preview "echo {} |
                         grep -o '[a-f0-9]\{7\}' |
                         head -1 |
-                        xargs -I@ sh -c 'git show --color=always @'"
+                        xargs -I@ sh -c 'git sh --color=always @'"
         else
             git l --color=always "$@" |
                 fzf --ansi --no-sort --height 100%
@@ -181,7 +181,7 @@ fzf_git_log_pickaxe() {
         if [ "$FZF_PREVIEW" -eq 1 ]; then
             git log --pretty=custom --color=always -S "$@" |
                 fzf --ansi --no-sort --height 100% \
-                    --preview "git show --color=always {1}"
+                    --preview "git sh --color=always {1}"
         else
             git log --pretty=custom --color=always -S "$@" |
                 fzf --ansi --no-sort --height 100%
@@ -205,7 +205,7 @@ fzf_git_reflog() {
         if [ "$FZF_PREVIEW" -eq 1 ]; then
             git reflog --color=always "$@" |
                 fzf --no-multi --ansi --no-sort --height 100% \
-                    --preview "git show --color=always {1}"
+                    --preview "git sh --color=always {1}"
         else
             git reflog --color=always "$@" |
                 fzf --no-multi --ansi --no-sort --height 100%
