@@ -802,7 +802,10 @@ highlight rainbowParensShell16  ctermfg=168  guifg=#d75f87
 
 " Enable rainbow parentheses on startup
 
-call rainbow_parentheses#activate()
+try
+    call rainbow_parentheses#activate()
+catch
+endtry
 
 
 " ----------------------------------------------------------------------
@@ -841,8 +844,7 @@ set statusline+=%r             " Readonly flag
 set statusline+=%h             " Help file flag
 set statusline+=%w\            " Preview window flag
 set statusline+=%#SLFilePath#  " Filepath highlight
-set statusline+=\ %{GetGitBranchName()}  " Git branch name
-set statusline+=%f\            " File path
+set statusline+=\ %f\            " File path
 set statusline+=%#SLSeparator# " Separator highlight
 set statusline+=%=             " Left/Right separator
 set statusline+=%#SLFileType#  " Filetype highlight
