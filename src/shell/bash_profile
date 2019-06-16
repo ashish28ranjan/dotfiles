@@ -61,6 +61,11 @@ if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
   . "$HOME/.nix-profile/etc/profile.d/nix.sh";
 fi
 
+# Alias git to hub
+if cmd_exists "hub"; then
+    eval "$(hub alias -s)"
+fi
+
 # Source z
 [ -f "$HOME/.config/z/shell/z.sh" ] \
     && source "$HOME/.config/z/shell/z.sh" \

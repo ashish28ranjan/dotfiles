@@ -38,6 +38,8 @@ brew_install "glances" "glances"
 
 brew_install "htop" "htop"
 
+brew_install "hub" "hub"
+
 install_binary "icdiff" \
     "https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.9.4/icdiff"
 

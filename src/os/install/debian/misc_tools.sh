@@ -57,6 +57,16 @@ install_package "ffmpeg" "ffmpeg libav-tools x264 x265"
 install_package "glances" "glances"
 install_package "htop" "htop"
 
+
+if [ ! -f "$HOME/bin/hub" ]; then
+    wget -qO "$tmpDir/hub.tgz" "https://github.com/github/hub/releases/download/v2.12.0/hub-linux-amd64-2.12.0.tgz" &> /dev/null \
+        && tar -xz -C "$tmpDir" -f "$tmpDir/hub.tgz" \
+        && cp -f "$tmpDir/hub-linux-amd64-2.12.0/bin/hub" "$HOME/bin/hub"
+fi
+execute "chmod +x '$HOME/bin/hub'" \
+        "hub"
+
+
 install_binary "icdiff" \
     "https://raw.githubusercontent.com/jeffkaufman/icdiff/release-1.9.4/icdiff"
 
