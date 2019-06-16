@@ -217,6 +217,10 @@
     changed = yellow reverse
     untracked = red reverse
 
+[commit]
+
+	template = ~/.git-commit-template
+
 [core]
 
     abbrev = 7
