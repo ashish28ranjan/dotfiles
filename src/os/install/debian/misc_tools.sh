@@ -55,6 +55,10 @@ install_deb_package "fd" "fd" "$tmpDir/fd.deb"
 
 install_package "ffmpeg" "ffmpeg libav-tools x264 x265"
 install_package "glances" "glances"
+
+execute "pip install --user grip" \
+    "Grip"
+
 install_package "htop" "htop"
 
 

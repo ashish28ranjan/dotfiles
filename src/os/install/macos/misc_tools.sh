@@ -36,6 +36,8 @@ brew_install "fd" "fd"
 
 brew_install "glances" "glances"
 
+brew_install "Grip" "grip"
+
 brew_install "htop" "htop"
 
 brew_install "hub" "hub"
